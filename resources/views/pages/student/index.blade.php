@@ -1,16 +1,14 @@
 <x-admin>
     <x-slot name="title">
-        Data driver
+        Data Siswa
     </x-slot>
 
     <div class="container-fluid">
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    @if(config('app.name', 'Laravel')=='Laravel')
-                    <a href="{{ route('driver.create') }}" class="btn btn-primary">Tambah data driver</a>
-                    @endif
-                    <livewire:table.main name="driver"/>
+                    <a href="{{ route('student.create') }}" class="btn btn-primary">Tambah data siswa</a>
+                    <livewire:table.main name="student"/>
                 </div>
             </div>
         </div>

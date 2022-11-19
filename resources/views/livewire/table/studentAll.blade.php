@@ -9,6 +9,9 @@
                 <th><a wire:click.prevent="sortBy('name')" role="button" href="#">
                         Nama siswa @include('components.sort-icon', ['field' => 'name'])
                     </a></th>
+                <th><a wire:click.prevent="sortBy('school_id')" role="button" href="#">
+                        Sekolah @include('components.sort-icon', ['field' => 'school_id'])
+                    </a></th>
                 <th>NISN</th>
                 <th>TTL</th>
                 <th>Cabor</th>
@@ -21,10 +24,11 @@
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
                     <td>{{ $index+1 }}</td>
                     <td>{{ $data->name }}</td>
+                    <td>{{ $data->school->name }}</td>
                     <td>{{ $data->nisn }}</td>
                     <td>{{ $data->place_birth.', '.$data->date_birth }}</td>
                     <td>{{ $data->sport->title }}</td>
-                    <td><img src="{{ asset('storage/'. $data->report ) }}" alt=""></td>
+                    <td><img src="{{ asset('storage/'. $data->report ) }}" style="width: 300px" alt=""></td>
                     <td class="whitespace-no-wrap row-action--icon">
 
                     </td>

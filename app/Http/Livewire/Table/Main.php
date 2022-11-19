@@ -9,6 +9,8 @@ use App\Models\Material;
 use App\Models\MaterialMutation;
 use App\Models\Receipt;
 use App\Models\Report;
+use App\Models\School;
+use App\Models\Student;
 use App\Models\TravelPermit;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -77,41 +79,21 @@ class Main extends Component
     public function get_pagination_data()
     {
         switch ($this->name) {
-            case 'driver':
-                $data = Driver::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.driver', "datas" => $data,];
+            case 'school':
+                $data = School::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.school', "datas" => $data,];
                 break;
-            case 'good-receipt':
-                $data = GoodReceipt::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.good-receipt', "datas" => $data,];
+            case 'schoolDetail':
+                $data = Student::searchSchool($this->search,$this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.student', "datas" => $data,];
                 break;
-            case 'material':
-                $data = Material::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.material', "datas" => $data,];
+            case 'student':
+                $data = Student::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.student', "datas" => $data,];
                 break;
-            case 'material-mutation':
-                $data = MaterialMutation::whereMaterialId($this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.material-mutation', "datas" => $data,];
-                break;
-            case 'material-mutation-all':
-                $data = MaterialMutation::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.material-mutation-all', "datas" => $data,];
-                break;
-            case 'invoice':
-                $data = Invoice::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.invoice', "datas" => $data,];
-                break;
-            case 'receipt':
-                $data = Receipt::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.receipt', "datas" => $data,];
-                break;
-            case 'travel-permit':
-                $data = TravelPermit::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
-                return ["view" => 'livewire.table.travel-permit', "datas" => $data,];
-                break;
-            case 'report':
-                $data = Report::search($this->search)->orderBy($this->sortField,$this->sortAsc? 'asc' : 'desc')->paginate($this->perPage);
-                return ['view'=>'livewire.table.report','datas'=>$data];
+            case 'studentAll':
+                $data = Student::searchAll($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.studentAll', "datas" => $data,];
                 break;
 
 

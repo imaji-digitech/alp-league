@@ -34,48 +34,23 @@
                             <i class="fas fa-home"></i><span> Dashboard</span>
                         </a>
                     </li>
-                    @if(auth()->id()!=6)
+
+                    @if(auth()->user()->school_id==null)
                         <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('report.index') }}">
-                                <i class="fas fa-home"></i><span> Report bulanan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-main-title">
-                            <div><h6>Pengolahan</h6></div>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('material.index') }}">
-                                <i class="fas fa-recycle"></i><span> Material</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('material-mutation') }}">
-                                <i class="fas fa-recycle"></i><span> Mutasi material</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-main-title">
-                            <div><h6>Surat & keuangan</h6></div>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('invoice.index') }}">
-                                <i class="fas fa-inbox"></i><span> Invoice</span>
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('student.all') }}">
+                                <i class="fas fa-graduation-cap"></i><span> Siswa</span>
                             </a>
                         </li>
 
                         <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('receipt.index') }}">
-                                <i class="fas fa-file-archive"></i><span> Kwitansi</span>
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('school') }}">
+                                <i class="fas fa-school"></i><span> Sekolah</span>
                             </a>
                         </li>
-
+                    @else
                         <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('travel-permit.index') }}">
-                                <i class="fas fa-truck"></i><span> Surat jalan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('good-receipt.index') }}">
-                                <i class="fas fa-box"></i><span> Terima barang</span>
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('student.index') }}">
+                                <i class="fas fa-graduation-cap"></i><span> Siswa</span>
                             </a>
                         </li>
                     @endif

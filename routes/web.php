@@ -39,25 +39,37 @@ Route::get('test/{a}', function ($a) {
 
 Route::post('/summernote', [SupportController::class, 'upload'])->name('summernote');
 Route::middleware(['auth:sanctum',])->group(function () {
+
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::resource('driver', DriverController::class)->only('index', 'create', 'edit', 'show');
 
-    Route::resource('material', MaterialController::class)->only('index', 'create', 'edit', 'show');
-    Route::get('/material/mutation/{id}', [MaterialController::class, 'mutationMaterial'])->name('material.mutation.create');
-    Route::get('/material-mutation/', [MaterialController::class, 'mutation'])->name('material-mutation');
-    Route::get('/material-mutation/create', [MaterialController::class, 'mutationCreate'])->name('material-mutation.create');
+    Route::get('/school', function (){
+        return view('pages.school.index');
+    })->name('school');
 
-    Route::resource('invoice', InvoiceController::class)->only('index', 'create', 'edit', 'show');
-    Route::resource('receipt', ReceiptController::class)->only('index', 'create', 'edit', 'show');
+    Route::get('/school/{id}', function ($id){
+        return view('pages.school.show',compact('id'));
+    })->name('school.show');
 
-    Route::resource('good-receipt', GoodReceiptController::class)->only('index', 'create', 'edit', 'show');
-    Route::get('/good-receipt/good-mutation/{id}/status/{status}', [GoodReceiptController::class, 'mutation'])->name('good-receipt.mutation');
-    Route::get('/good-receipt/download/{id}', [GoodReceiptController::class, 'download'])->name('good-receipt.download');
+    Route::get('/student-all', function (){
+        return view('pages.student.all');
+    })->name('student.all');
 
-    Route::resource('travel-permit', TravelPermitController::class)->only('index', 'create', 'edit', 'show');
-    Route::get('/travel-permit/download/{id}', [TravelPermitController::class, 'download'])->name('travel-permit.download');
+    Route::get('/student', function (){
+        return view('pages.student.index');
+    })->name('student.index');
+
+    Route::get('/student/create', function (){
+        return view('pages.student.create');
+    })->name('student.create');
+
+    Route::get('/student/edit/{id}', function ($id){
+        return view('pages.student.edit',compact('id'));
+    })->name('student.edit');
+
+
+
 
     Route::get('/receipt/download/{id}', function ($id) {
         $receipt = Receipt::findOrFail($id);
@@ -75,21 +87,8 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return view('pages.report.index');
     })->name('report.index');
 
-    Route::get('report', function () {
-        return view('pages.report.index');
-    })->name('report.index');
-
     Route::get('report/create', function () {
         return view('pages.report.create');
     })->name('report.create');
     Route::resource('report', ReportController::class)->only('show');
-
-
-
-    Route::get('testing', function () {
-
-
-    });
-
-
 });

@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-body">
 {{--                    <a href="{{ route('student.create') }}" class="btn btn-primary">Tambah data siswa</a>--}}
-                    <livewire:table.main name="school"/>
+                    <livewire:table.main name="schoolDetail" :data-id="$id"/>
                 </div>
             </div>
         </div>
