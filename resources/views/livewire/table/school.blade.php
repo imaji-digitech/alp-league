@@ -6,6 +6,7 @@
                 <th><a wire:click.prevent="sortBy('id')" role="button" href="#">
                         # @include('components.sort-icon', ['field' => 'id'])
                     </a></th>
+                <th>email</th>
                 <th><a wire:click.prevent="sortBy('name')" role="button" href="#">
                         Nama @include('components.sort-icon', ['field' => 'name'])
                     </a></th>
@@ -19,6 +20,7 @@
             @foreach ($datas as $index=>$data)
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
                     <td>{{ $index+1 + ($page-1)*$perPage }}</td>
+                    <td>{{ $data->user->email }}</td>
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->village }}</td>
                     @php

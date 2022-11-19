@@ -36,11 +36,11 @@ class School extends Model
     }
 
     /**
-     * @return HasMany
+     * @return HasOne
      */
-    public function users()
+    public function user()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasOne('App\Models\User');
     }
 
     /**
