@@ -7,9 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Imaji Sociopreneur Store</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
+    <title>ALP LEAGUE | Imaji Sociopreneur</title>
     <link rel="stylesheet" href="{{asset('user/css/main.css')}}">
     <link href="{{asset('user/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
