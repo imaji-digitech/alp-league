@@ -3,15 +3,15 @@
     <div>
         <div class="logo-wrapper">
             <a href="#">
-                <img class="img-fluid for-light" src="{{asset('assets/images/logo/logo.png')}}" alt="">
-                <img class="img-fluid for-dark" src="{{asset('assets/images/logo/logo_dark.png')}}" alt="">
+                <img class="img-fluid for-light" style="height: 50px" src="{{asset('assets/images/logo/logo.png')}}" alt="">
+                <img class="img-fluid for-dark" style="height: 50px" src="{{asset('assets/images/logo/logo_dark.png')}}" alt="">
             </a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"></i></div>
         </div>
         <div class="logo-icon-wrapper">
             <a href="#">
-                <img class="img-fluid" src="{{asset('assets/images/logo/logo-icon.png')}}" alt="">
+                <img class="img-fluid" style="height: 50px" src="{{asset('assets/images/logo/logo-icon.png')}}" alt="">
             </a>
         </div>
         <nav class="sidebar-main">
