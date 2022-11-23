@@ -58,9 +58,6 @@
             <a class="col-sm-4 mt-3" style="text-align: center;" href="">
                 {{--                <img src="{{asset('user/images/sociopreneur.png')}}" style="width:100%;" alt="" srcset="">--}}
             </a>
-
-
-
         </div>
     </div>
 </nav>

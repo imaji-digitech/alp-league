@@ -26,7 +26,7 @@ class School extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'village', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'village','upload1','upload2', 'created_at', 'updated_at'];
 
     public static function search($query)
     {

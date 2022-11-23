@@ -68,14 +68,21 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return view('pages.student.edit',compact('id'));
     })->name('student.edit');
 
+    Route::get('/download/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2022',function (){
+        return response()->download('alp-league/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2022.docx');
+    })->name('download.surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2022');
+    Route::get('/download/surat-perwalian-alp-league-kabupaten-2022',function (){
+        return response()->download('alp-league/surat-perwakilan-alp-league-kabupaten-2022.docx');
+    })->name('download.surat-perwalian-alp-league-kabupaten-2022');
 
 
 
-    Route::get('/receipt/download/{id}', function ($id) {
-        $receipt = Receipt::findOrFail($id);
+
+    Route::get('/download', function () {
+        $school=\App\Models\School::get();
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('pdf.receipt', compact('receipt'))->setPaper('a4');
-        return $pdf->stream('nota-pembayaran-' . $receipt->receipt_number . '-' . $receipt->created_at->format('d-m-Y') . '.pdf');
+        $pdf->loadView('pdf.id-password', compact('school'))->setPaper('a4','landscape');
+        return $pdf->stream('nota-pembayaran.pdf');
     })->name('receipt.download');
 
 

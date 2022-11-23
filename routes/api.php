@@ -1,17 +1,6 @@
 <?php
 
-use App\Models\GoodReceipt;
-use App\Models\GoodReceiptDetail;
-use App\Models\Invoice;
-use App\Models\InvoiceDetail;
-use App\Models\Log;
-use App\Models\Material;
-use App\Models\MaterialMutation;
-use App\Models\Receipt;
-use App\Models\ReceiptDetail;
-use App\Models\Report;
-use App\Models\TravelPermit;
-use App\Models\TravelPermitDetail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
