@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'school_id'
     ];
 
     /**
@@ -60,6 +61,6 @@ class User extends Authenticatable
     ];
     public function school()
     {
-        return $this->belongsTo('App\Models\school');
+        return $this->belongsTo('App\Models\school','school_id');
     }
 }
