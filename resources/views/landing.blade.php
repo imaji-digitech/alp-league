@@ -22,15 +22,19 @@
                     margin-top: 30px;
                 }
 
-                .title {
-                    text-align: center;
+                .title div{
+                    width: 100%; text-align: center
                 }
+
                 .title p{
                     text-align: center;
                     font-size: 1.5rem;
                     font-weight: bold;
                     padding: 0;
                     margin: 0;
+                }
+                .title a{
+                    text-align: center;
                 }
                 .title h1{
                     text-align: center;
@@ -89,7 +93,10 @@
                             <h2>
                                 TINGKAT KABUPATEN
                             </h2>
-                            <a href="{{ route('login') }}" class="btn btn-success mt-3" style="padding-left: 50px;padding-right: 50px; font-size: 20px">Masuk</a>
+                            <div>
+                                <a href="{{ route('login') }}" class="btn btn-success mt-3" style="padding-left: 50px;padding-right: 50px; font-size: 20px">Masuk</a>
+                            </div>
+
                         </div>
                         <div style="text-align: center;" class="col-md-5 title-img">
                             <img src="{{ asset('alp-league/logo.png') }}" alt="" >
