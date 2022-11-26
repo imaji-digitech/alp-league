@@ -11,6 +11,7 @@ use Livewire\Component;
 class DashboardData extends Component
 {
     public $generalData;
+
     public function mount()
     {
         $this->generalData['student'] = Student::whereSchoolId(auth()->user()->school_id)->get()->count();

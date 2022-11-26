@@ -14,6 +14,7 @@ use App\Models\Material;
 use App\Models\MaterialMutation;
 use App\Models\Receipt;
 use App\Models\Report;
+use App\Models\School;
 use App\Models\TravelPermit;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\App;
@@ -75,27 +76,29 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return response()->download('alp-league/surat-perwalian-alp-league-kabupaten-2022.docx');
     })->name('download.surat-perwalian-alp-league-kabupaten-2022');
 
-
-
-
     Route::get('/download', function () {
-        $school=\App\Models\School::get();
+        $school= School::get();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('pdf.id-password', compact('school'))->setPaper('a4','landscape');
         return $pdf->stream('nota-pembayaran.pdf');
     })->name('receipt.download');
 
 
-    Route::get('/report/monthly/{month}/{year}', function ($month, $year) {
-        return view('pages.report.monthly-report', compact('month', 'year'));
-    })->name('report.monthly');
+    Route::get('download/surat-pernyataan-dan-pendaftaran/{id}',function ($id){
+        return response()->download(storage_path("app/public/" . School::findOrFail($id)->upload1));
+    })->name('download.surat-pernyataan-dan-pendaftaran');
+    Route::get('show/surat-pernyataan-dan-pendaftaran/{id}',function ($id){
+        $title="Surat Pernyataan dan Pendaftaran dari ".School::findOrFail($id)->name;
+        $url='storage/'.School::findOrFail($id)->upload1;
+        return view('show-image',compact('url','title'));
+    })->name('show.surat-pernyataan-dan-pendaftaran');
 
-    Route::get('report', function () {
-        return view('pages.report.index');
-    })->name('report.index');
-
-    Route::get('report/create', function () {
-        return view('pages.report.create');
-    })->name('report.create');
-    Route::resource('report', ReportController::class)->only('show');
+    Route::get('download/surat-perwalian/{id}',function ($id){
+        return response()->download(storage_path("app/public/" . School::findOrFail($id)->upload2));
+    })->name('download.surat-perwalian');
+    Route::get('show/surat-perwalian/{id}',function ($id){
+        $title="Surat Perwalian dari ".School::findOrFail($id)->name;
+        $url='storage/'.School::findOrFail($id)->upload2;
+        return view('show-image',compact('url',$title));
+    })->name('show.surat-perwalian');
 });
