@@ -11,19 +11,25 @@
                     <thead>
                     <td><b>Sekolah</b></td>
                     <td><b>Cabang olahraga yang telah diikuti</b></td>
+                    <td><b>Unduh daftar hadir</b></td>
                     <td><b>Jumlah siswa mengikuti</b></td>
                     </thead>
                     @foreach($generalData['clear'] as $data)
                         <tr>
                             <td>{{ $data->name }}</td>
                             @php
-                                $query="SELECT sports.title FROM `students` JOIN sports ON sport_id=sports.id WHERE school_id = $data->id GROUP BY sports.title;";
+                                $query="SELECT sports.title, count(*) as jumlah FROM `students` JOIN sports ON sport_id=sports.id WHERE school_id = $data->id GROUP BY sports.title;";
                                 $d= DB::select(DB::raw($query))
                             @endphp
                             <td>
                                 @foreach($d as $dd)
-                                    {{ $dd->title }},
+                                    {{ $dd->title }} ({{$dd->jumlah}})<br>
                                 @endforeach
+                            </td>
+                            <td>
+{{--                                @foreach($d as $dd)--}}
+{{--                                    <i class="fa fa-download"></i>{{ $dd->title }} <br>--}}
+{{--                                @endforeach--}}
                             </td>
                             <td>{{ $data->students->count() }}</td>
                         </tr>
