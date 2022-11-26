@@ -45,6 +45,21 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+//    Route::get('pdf', function () {
+//        $school= School::get();
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadView('pdf.presence', compact('school'))->setPaper('a4');
+//        return $pdf->stream('nota-pembayaran.pdf');
+////        return view('pdf.presence');
+//    });
+//    Route::get('pdfa', function () {
+//        $school= School::get();
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadView('pdf.presence-match', compact('school'))->setPaper('a4');
+//        return $pdf->stream('nota-pembayaran.pdf');
+////        return view('pdf.presence');
+//    });
+
     Route::get('/school', function (){
         return view('pages.school.index');
     })->name('school');

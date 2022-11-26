@@ -87,7 +87,7 @@
                                    target="_blank">
                                     <i class="fa fa-download"></i> Unduh
                                 </a>
-                                <a href="{{ route('show.surat-perwalian',$data->upload2) }}"
+                                <a href="{{ route('show.surat-perwalian',$data->id) }}"
                                    target="_blank">
                                     <i class="fa fa-eye"></i> Lihat
                                 </a>

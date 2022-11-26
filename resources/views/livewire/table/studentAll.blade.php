@@ -14,6 +14,7 @@
                     </a></th>
                 <th>NISN</th>
                 <th>TTL</th>
+                <th>Umur saat 19 desember 2022</th>
                 <th>Cabor</th>
                 <th>Gambar Raport</th>
                 <th>Aksi</th>
@@ -27,6 +28,7 @@
                     <td>{{ $data->school->name }}</td>
                     <td>{{ $data->nisn }}</td>
                     <td>{{ $data->place_birth.', '.$data->date_birth }}</td>
+                    <td>{{ \Carbon\Carbon::parse($data->date_birth)->diff(\Carbon\Carbon::parse('19-12-2022'))->format('%y Tahun %m bulan %d hari') }}</td>
                     <td>{{ $data->sport->title }}</td>
                     <td><img src="{{ asset('storage/'. $data->report ) }}" style="width: 300px" alt=""></td>
                     <td class="whitespace-no-wrap row-action--icon">
