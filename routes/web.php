@@ -114,6 +114,6 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('show/surat-perwalian/{id}',function ($id){
         $title="Surat Perwalian dari ".School::findOrFail($id)->name;
         $url='storage/'.School::findOrFail($id)->upload2;
-        return view('show-image',compact('url',$title));
+        return view('show-image',compact('url','title'));
     })->name('show.surat-perwalian');
 });
