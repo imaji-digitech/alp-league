@@ -15,9 +15,19 @@ class Upload2 extends Component
 
     public $upload;
 
+    protected $messages = [
+        'upload.required' => 'Mohon upload terlebih dahulu',
+        'upload.mimes' => 'Mohon upload dengan format yang sesuai(png,jpeg,jpg)',
+    ];
+    protected $rules = [
+           'upload' => 'required|mimes:png,jpg,jpeg',
+     ];
+
 
     public function upload()
     {
+        $this->validate();
+        $this->resetErrorBag();
         $image = $this->upload;
         $filename = Str::slug(auth()->user()->school->village . '-' . auth()->user()->school->name)
             . '-' . rand(0, 1000)
@@ -29,8 +39,8 @@ class Upload2 extends Component
             $constraint->aspectRatio();
         });
         $image->stream();
-        Storage::disk('local')->put('public/surat-pernyataan-dan-pendaftaran//' . $filename, $image, 'public');
-        $school->update(['upload2' =>$u1]);
+        Storage::disk('local')->put('public/surat-pernyataan-dan-pendaftaran/' . $filename, $image, 'public');
+        $school->update(['upload2' => $u1]);
         $this->emit('swal:alert', [
             'type' => 'success',
             'title' => 'Berhasil melakukan upload surat perwalian',

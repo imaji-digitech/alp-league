@@ -6,7 +6,7 @@
         @endif
     </div>
     <div class="col-sm-12 col-xl-8 col-lg-8">
-        <x-form.input type="file" title="" model="upload" accept="image/*"/>
+        <x-form.input type="file" title="" model="upload" accept="image/*" required/>
         <div wire:loading wire:target="upload">
             Proses upload
         </div>
@@ -16,9 +16,16 @@
     </div>
     <div class="col-sm-12 col-xl-12 col-lg-12">
         @if($upload)
-            <img src="{{$upload->temporaryUrl()}}" alt="" style="max-height: 300px">
-        @elseif(auth()->user()->school->upload2!=null)
-            <img src="{{ asset('storage/'.auth()->user()->school->upload2) }}" alt="" style="max-height: 300px">
+            @if($upload->getClientOriginalExtension()=="jpg" or $upload->getClientOriginalExtension()=="jpeg" or $upload->getClientOriginalExtension()=="png")
+                @if($upload)
+                    <img src="{{$upload->temporaryUrl()}}" alt="" style="max-height: 300px">
+                @elseif(auth()->user()->school->upload2!=null)
+                    <img src="{{ asset('storage/'.auth()->user()->school->upload2) }}" alt="" style="max-height: 300px">
+                @endif
+            @else
+                Mohon upload dengan format yang sesuai(png,jpeg,jpg)
+            @endif
         @endif
+
     </div>
 </form>

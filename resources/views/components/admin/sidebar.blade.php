@@ -37,6 +37,11 @@
 
                     @if(auth()->user()->school_id==null)
                         <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.index') }}">
+                                <i class="fas fa-graduation-cap"></i><span> Pertandingan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-list">
                             <a class="sidebar-link sidebar-title link-nav" href="{{ route('student.all') }}">
                                 <i class="fas fa-graduation-cap"></i><span> Siswa</span>
                             </a>

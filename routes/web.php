@@ -3,6 +3,7 @@
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\GoodReceiptController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\MatchMakingController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ReportController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TravelPermitController;
 use App\Models\GoodReceipt;
 use App\Models\Invoice;
+use App\Models\MatchMaking;
 use App\Models\Material;
 use App\Models\MaterialMutation;
 use App\Models\Receipt;
@@ -45,6 +47,17 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::resource('match-making', MatchMakingController::class)->only('index','show','create','edit');
+
+    Route::get('match-making/download/{id}', function ($id) {
+        $match= MatchMaking::findOrFail($id);
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('pdf.presence-match', compact('match'))->setPaper('a4');
+        return $pdf->stream($match->sport->title.'-'.$match->title.'.pdf');
+//        return view('pdf.presence');
+    })->name('match-making.download');
+
+
 //    Route::get('pdf', function () {
 //        $school= School::get();
 //        $pdf = App::make('dompdf.wrapper');
@@ -52,13 +65,7 @@ Route::middleware(['auth:sanctum',])->group(function () {
 //        return $pdf->stream('nota-pembayaran.pdf');
 ////        return view('pdf.presence');
 //    });
-//    Route::get('pdfa', function () {
-//        $school= School::get();
-//        $pdf = App::make('dompdf.wrapper');
-//        $pdf->loadView('pdf.presence-match', compact('school'))->setPaper('a4');
-//        return $pdf->stream('nota-pembayaran.pdf');
-////        return view('pdf.presence');
-//    });
+
 
     Route::get('/school', function (){
         return view('pages.school.index');

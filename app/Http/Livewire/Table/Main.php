@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Table;
 use App\Models\GoodReceipt;
 use App\Models\Driver;
 use App\Models\Invoice;
+use App\Models\MatchMaking;
 use App\Models\Material;
 use App\Models\MaterialMutation;
 use App\Models\Receipt;
@@ -94,6 +95,10 @@ class Main extends Component
             case 'studentAll':
                 $data = Student::searchAll($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.studentAll', "datas" => $data,];
+                break;
+            case 'match-making':
+                $data = MatchMaking::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.match-making', "datas" => $data,];
                 break;
 
 

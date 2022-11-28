@@ -2,11 +2,10 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" style="padding: 20px">
                 <h2>Telah menyelsaikan pendaftaran sekolah</h2>
             </div>
-            <div class="card-body">
-                <br>
+            <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
                     <td><b>Sekolah</b></td>
@@ -40,10 +39,10 @@
     </div>
     <div class="col-sm-6">
         <div class="card">
-            <div class="card-header">
-                <b>Telah melakukan upload surat pernyataan dan pendaftaran</b>
+            <div class="card-header" style="padding: 20px">
+                <h5><b>Telah melakukan upload surat pendaftaran</b></h5>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
                     <td><b>Nama Sekolah Sekolah</b></td>
@@ -70,10 +69,10 @@
     </div>
     <div class="col-sm-6">
         <div class="card">
-            <div class="card-header">
-                <b>Telah melakukan upload surat perwalian</b>
+            <div class="card-header" style="padding: 20px">
+                <h5><b>Telah melakukan upload surat perwalian</b></h5>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
                     <td><b>Nama Sekolah Sekolah</b></td>

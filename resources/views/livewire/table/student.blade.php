@@ -19,7 +19,7 @@
         <x-slot name="body">
             @foreach ($datas as $index=>$data)
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
-                    <td>{{ $index+1 }}</td>
+                    <td>{{ $index+1 + ($page-1)*$perPage }}</td>
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->nisn }}</td>
                     <td>{{ $data->place_birth.', '.$data->date_birth }}</td>

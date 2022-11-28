@@ -16,9 +16,15 @@
     </div>
     <div class="col-sm-12 col-xl-12 col-lg-12">
         @if($upload)
-            <img src="{{$upload->temporaryUrl()}}" alt="" style="max-height: 300px">
-        @elseif(auth()->user()->school->upload1!=null)
-            <img src="{{ asset('storage/'.auth()->user()->school->upload1) }}" alt="" style="max-height: 300px">
+            @if($upload->getClientOriginalExtension()=="jpg" or $upload->getClientOriginalExtension()=="jpeg" or $upload->getClientOriginalExtension()=="png")
+                @if($upload)
+                    <img src="{{$upload->temporaryUrl()}}" alt="" style="max-height: 300px">
+                @elseif(auth()->user()->school->upload2!=null)
+                    <img src="{{ asset('storage/'.auth()->user()->school->upload2) }}" alt="" style="max-height: 300px">
+                @endif
+            @else
+                Mohon upload dengan format yang sesuai(png,jpeg,jpg)
+            @endif
         @endif
     </div>
 </form>
