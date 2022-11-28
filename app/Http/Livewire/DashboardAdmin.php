@@ -15,7 +15,7 @@ class DashboardAdmin extends Component
             ->whereNotNull('upload2')
             ->get();
         $this->generalData['spp'] = School::whereNotNull('upload1')->orWhereNotNull('upload2')
-            ->orderByDesc('updated_at')->get();
+            ->orderBy('updated_at')->get();
     }
 
     public function render()
