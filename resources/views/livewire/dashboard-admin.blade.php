@@ -45,13 +45,15 @@
             <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
+                    <td><b>Nomer</b></td>
                     <td><b>Nama Sekolah Sekolah</b></td>
                     <td><b>Unduh surat pernyataan</b></td>
                     <td><b>Unduh surat Perwalian</b></td>
                     <td><b>Diperbarui pada</b></td>
                     </thead>
-                    @foreach($generalData['spp'] as $data)
+                    @foreach($generalData['spp'] as $index=>$data)
                         <tr>
+                            <td>{{ $index+1 }}</td>
                             <td>{{ $data->name }}</td>
                             <td>
                                 @if($data->upload1!=null)
