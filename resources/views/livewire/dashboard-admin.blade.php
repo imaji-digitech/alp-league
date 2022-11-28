@@ -3,7 +3,7 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="padding: 20px">
-                <h2>Telah menyelsaikan pendaftaran sekolah</h2>
+                <h5>Telah menyelsaikan pendaftaran sekolah</h5>
             </div>
             <div class="card-body" style="padding: 20px">
                 <table class="table">
@@ -37,16 +37,18 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="padding: 20px">
-                <h5><b>Telah melakukan upload surat pendaftaran</b></h5>
+                <h5><b>Telah melakukan upload surat </b></h5>
             </div>
             <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
                     <td><b>Nama Sekolah Sekolah</b></td>
                     <td><b>Unduh surat pernyataan</b></td>
+                    <td><b>Unduh surat Perwalian</b></td>
+                    <td><b>Diperbarui pada</b></td>
                     </thead>
                     @foreach($generalData['spp'] as $data)
                         <tr>
@@ -61,26 +63,6 @@
                                     <i class="fa fa-eye"></i> Lihat
                                 </a>
                             </td>
-                        </tr>
-                    @endforeach
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-header" style="padding: 20px">
-                <h5><b>Telah melakukan upload surat perwalian</b></h5>
-            </div>
-            <div class="card-body" style="padding: 20px">
-                <table class="table">
-                    <thead>
-                    <td><b>Nama Sekolah Sekolah</b></td>
-                    <td><b>Unduh surat pernyataan</b></td>
-                    </thead>
-                    @foreach($generalData['sp'] as $data)
-                        <tr>
-                            <td>{{ $data->name }}</td>
                             <td>
                                 <a href="{{ route('download.surat-perwalian',$data->id) }}"
                                    target="_blank">
@@ -91,10 +73,41 @@
                                     <i class="fa fa-eye"></i> Lihat
                                 </a>
                             </td>
+                            <td>{{ $data->updated_at }}</td>
                         </tr>
                     @endforeach
                 </table>
             </div>
         </div>
     </div>
+{{--    <div class="col-sm-6">--}}
+{{--        <div class="card">--}}
+{{--            <div class="card-header" style="padding: 20px">--}}
+{{--                <h5><b>Telah melakukan upload surat perwalian</b></h5>--}}
+{{--            </div>--}}
+{{--            <div class="card-body" style="padding: 20px">--}}
+{{--                <table class="table">--}}
+{{--                    <thead>--}}
+{{--                    <td><b>Nama Sekolah Sekolah</b></td>--}}
+{{--                    <td><b>Unduh surat pernyataan</b></td>--}}
+{{--                    </thead>--}}
+{{--                    @foreach($generalData['sp'] as $data)--}}
+{{--                        <tr>--}}
+{{--                            <td>{{ $data->name }}</td>--}}
+{{--                            <td>--}}
+{{--                                <a href="{{ route('download.surat-perwalian',$data->id) }}"--}}
+{{--                                   target="_blank">--}}
+{{--                                    <i class="fa fa-download"></i> Unduh--}}
+{{--                                </a>--}}
+{{--                                <a href="{{ route('show.surat-perwalian',$data->id) }}"--}}
+{{--                                   target="_blank">--}}
+{{--                                    <i class="fa fa-eye"></i> Lihat--}}
+{{--                                </a>--}}
+{{--                            </td>--}}
+{{--                        </tr>--}}
+{{--                    @endforeach--}}
+{{--                </table>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
