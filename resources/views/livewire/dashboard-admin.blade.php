@@ -54,16 +54,20 @@
                         <tr>
                             <td>{{ $data->name }}</td>
                             <td>
-                                <a href="{{ route('download.surat-pernyataan-dan-pendaftaran',$data->id) }}"
-                                   target="_blank">
-                                    <i class="fa fa-download"></i> Unduh
-                                </a>
-                                <a href="{{ route('show.surat-pernyataan-dan-pendaftaran',$data->id) }}"
-                                   target="_blank">
-                                    <i class="fa fa-eye"></i> Lihat
-                                </a>
+                                @if($data->upload1!=null)
+                                    <a href="{{ route('download.surat-pernyataan-dan-pendaftaran',$data->id) }}"
+                                       target="_blank">
+                                        <i class="fa fa-download"></i> Unduh
+                                    </a>
+                                    <a href="{{ route('show.surat-pernyataan-dan-pendaftaran',$data->id) }}"
+                                       target="_blank">
+                                        <i class="fa fa-eye"></i> Lihat
+                                    </a>
+                                @endif
+
                             </td>
                             <td>
+                                @if($data->upload2!=null)
                                 <a href="{{ route('download.surat-perwalian',$data->id) }}"
                                    target="_blank">
                                     <i class="fa fa-download"></i> Unduh
@@ -72,6 +76,7 @@
                                    target="_blank">
                                     <i class="fa fa-eye"></i> Lihat
                                 </a>
+                                    @endif
                             </td>
                             <td>{{ $data->updated_at }}</td>
                         </tr>
