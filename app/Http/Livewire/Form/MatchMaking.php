@@ -33,7 +33,14 @@ class MatchMaking extends Component
         }
         Model::create($this->data);
 //        dd('asd');
+        $this->emit('swal:alert', [
+            'type' => 'success',
+            'title' => 'Berhasil menambahkan data',
+            'timeout' => 3000,
+            'icon' => 'success'
+        ]);
         $this->emit('redirect', route(  'match-making.index'));
+
     }
 
     protected function getRules()

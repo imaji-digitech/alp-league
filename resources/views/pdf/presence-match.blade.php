@@ -97,8 +97,8 @@
 
                     @for($i=1;$i<=10;$i++)
                         <tr>
-                            <td style="text-align: center">{{ $i }}.</td>
-                            <td style="padding-left: 10px">@isset($student1[$i-1]) {{ $student1[$i-1]->name }} @endisset</td>
+                            <td style="text-align: center;font-size: 13px">{{ $i }}</td>
+                            <td style="padding-left: 10px;text-transform: uppercase;font-size: 13px">@isset($student1[$i-1]) {{ $student1[$i-1]->name }} @endisset</td>
                         </tr>
                     @endfor
 
@@ -118,8 +118,8 @@
                     </tr>
                     @for($i=1;$i<=10;$i++)
                         <tr>
-                            <td style="padding-right: 10px; text-align: right">@isset($student2[$i-1]) {{ $student2[$i-1]->name }} @endisset</td>
-                            <td style="text-align: center">.{{ $i }}</td>
+                            <td style="text-align:right;padding-right: 10px;text-transform: uppercase;font-size: 13px">@isset($student2[$i-1]) {{ $student2[$i-1]->name }} @endisset</td>
+                            <td style="text-align: center;font-size: 13px">{{ $i }}</td>
                         </tr>
                     @endfor
                 </table>
@@ -217,15 +217,15 @@
                 </th>
             </tr>
             <tr>
-                <td style="text-align: center">1.</td>
+                <td style="font-size: 13px;text-align: center">1</td>
                 <td></td>
-                <td style="text-align: center">Official</td>
+                <td style="font-size: 13px;text-align: center">Official</td>
             </tr>
-            @for($i=2;$i<=10;$i++)
+            @for($i=2;$i<=11;$i++)
                 <tr>
-                    <td style="text-align: center">{{ $i }}.</td>
-                    <td>@isset(${'student'.$z}[$i-2]) {{ ${'student'.$z}[$i-2]->name }} @endisset</td>
-                    <td style="text-align: center">@isset(${'student'.$z}[$i-2]) {{ ${'student'.$z}[$i-2]->nisn }} @endisset</td>
+                    <td style="font-size: 13px;text-align: center">{{ $i }}</td>
+                    <td style="font-size: 13px; text-transform: uppercase; padding-left: 10px">@isset(${'student'.$z}[$i-2]) {{ ${'student'.$z}[$i-2]->name }} @endisset</td>
+                    <td style="font-size: 13px;text-align: center">@isset(${'student'.$z}[$i-2]) {{ ${'student'.$z}[$i-2]->nisn }} @endisset</td>
                 </tr>
             @endfor
 

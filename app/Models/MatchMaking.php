@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property integer $id
@@ -30,13 +31,15 @@ class MatchMaking extends Model
     /**
      * @var array
      */
-    protected $fillable = ['school1_id', 'school2_id', 'sport_id', 'title', 'date_match', 'supervisor', 'created_at', 'updated_at'];
+    protected $fillable = ['school1_id', 'school2_id', 'sport_id', 'title', 'update_score', 'score1', 'score2', 'date_match', 'supervisor', 'created_at', 'updated_at'];
 
-    public static function getForm(){
+    public static function getForm()
+    {
         return ['school1_id', 'school2_id', 'sport_id', 'title', 'date_match', 'supervisor',];
     }
 
-    public static function search($query){
+    public static function search($query)
+    {
         return empty($query) ? static::query()
             : static::where('title', 'like', '%' . $query . '%')
                 ->orWhere('supervisor', 'like', '%' . $query . '%')
@@ -49,18 +52,19 @@ class MatchMaking extends Model
                 });
     }
 
-    public static function getRules(){
+    public static function getRules()
+    {
         return [
-            'data.title'=>'required|max:255',
-            'data.supervisor'=>'required|max:255',
-            'data.school1_id'=>'required',
-            'data.school2_id'=>'required',
-            'data.sport_id'=>'required',
+            'data.title' => 'required|max:255',
+            'data.supervisor' => 'required|max:255',
+            'data.school1_id' => 'required',
+            'data.school2_id' => 'required',
+            'data.sport_id' => 'required',
         ];
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function school1()
     {
@@ -68,7 +72,7 @@ class MatchMaking extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function school2()
     {
@@ -76,7 +80,7 @@ class MatchMaking extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function sport()
     {

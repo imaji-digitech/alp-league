@@ -39,6 +39,9 @@ Route::get('/', function () {
 Route::get('test/{a}', function ($a) {
     dd($a);
 });
+Route::get('register', function () {
+    return redirect(route('login'));
+});
 
 Route::post('/summernote', [SupportController::class, 'upload'])->name('summernote');
 Route::middleware(['auth:sanctum',])->group(function () {

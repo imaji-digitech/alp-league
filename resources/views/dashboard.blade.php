@@ -4,9 +4,12 @@
     </x-slot>
     <div>
         <div class="container-fluid">
+
             @livewire('dashboard-data')
             @if(auth()->user()->school_id!=null)
                 @livewire('dashboard-user')
+
+
             @else
                 <div class="card">
                     <div class="card-body">
