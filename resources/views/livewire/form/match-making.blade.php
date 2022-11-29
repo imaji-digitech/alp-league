@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <x-form.input model="data.date_match" title="Tanggal" type="date"/>
+            <x-form.input model="data.date_match" title="Tanggal" type="datetime-local"/>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-12">
