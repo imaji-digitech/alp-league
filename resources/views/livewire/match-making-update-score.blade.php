@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 <div class="card" style="padding: 5px;background: {{$background}};color: {{ $color }}">
 
     <form wire:submit.prevent="updateScore">
@@ -38,6 +39,13 @@
             <div class="bg-white mx-auto"
                  style="border-radius: 10px; margin: 10px; padding: 10px 0;color: black; width: 400px">
                 <table style="width: 100%">
+                    @if($school==1)
+                        <tr>
+                            <td style=" text-align: center" colspan="3">
+                                Pertandingan {{ $match->sport->title }}
+                            </td>
+                        </tr>
+                    @endif
                     <tr>
                         <td style="width: 45%; text-align: right">
                             Pertandingan<br>
@@ -55,6 +63,13 @@
                         <td style="width: 10%; text-align: center"> :</td>
                         <td style="width: 45%; text-align: left">
                             {{ $match->supervisor }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style=" text-align: center" colspan="3">
+                            <b>{{ Carbon::parse($match->date_match)->isoFormat('dddd, d MMMM YYYY') }}</b>
+                            <br>
+                            <b>{{ Carbon::parse($match->date_match)->isoFormat('HH:mm') }}</b>
                         </td>
                     </tr>
                 </table>

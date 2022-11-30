@@ -13,6 +13,8 @@ class MatchMakingUpdateScore extends Component
     public $color;
     public $background;
     public $updateAble=0;
+    public $school;
+
     public function mount(){
         $this->score1=$this->match->score1;
         $this->score2=$this->match->score2;

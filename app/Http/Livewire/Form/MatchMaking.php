@@ -18,6 +18,7 @@ class MatchMaking extends Component
     public $data;
     public $dataId;
     public $action;
+    public $school;
 
     public function mount(){
         $this->optionTeam=eloquent_to_options(School::get(),'id','name');
