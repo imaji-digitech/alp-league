@@ -14,8 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property User[] $users
  * @property Student[] $students
  */
-class School extends Model
-{
+class School extends Model {
     /**
      * The "type" of the auto-incrementing ID.
      *
@@ -26,13 +25,20 @@ class School extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'village','upload1','upload2', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'village', 'upload1', 'upload2', 'created_at', 'updated_at'];
 
     public static function search($query)
     {
         return empty($query) ? static::query()
-            : static::where('name', 'like', '%' . $query . '%')
-                ->orWhere('village', 'like', '%' . $query . '%');
+            ->whereNotNull('upload1')
+            ->orWhereNotNull('upload2')
+            : static::where(function ($q){
+                $q->whereNotNull('upload1')
+                    ->orWhereNotNull('upload2');
+            })->where(function ($q) use ($query) {
+                $q->where('name', 'like', '%' . $query . '%')
+                    ->orWhere('village', 'like', '%' . $query . '%');
+            });
     }
 
     /**
@@ -49,5 +55,10 @@ class School extends Model
     public function students()
     {
         return $this->hasMany('App\Models\Student');
+    }
+
+    public function schoolSports()
+    {
+        return $this->hasMany('App\Models\SchoolSport');
     }
 }
