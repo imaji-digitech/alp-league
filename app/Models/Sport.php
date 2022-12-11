@@ -15,7 +15,7 @@ class Sport extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -31,5 +31,8 @@ class Sport extends Model
     public function students()
     {
         return $this->hasMany('App\Models\Student');
+    }
+    public function schoolSports(){
+        return $this->hasMany('App\Models\SchoolSport');
     }
 }

@@ -3,8 +3,10 @@
     <div>
         <div class="logo-wrapper">
             <a href="#">
-                <img class="img-fluid for-light" style="height: 50px" src="{{asset('assets/images/logo/logo.png')}}" alt="">
-                <img class="img-fluid for-dark" style="height: 50px" src="{{asset('assets/images/logo/logo_dark.png')}}" alt="">
+                <img class="img-fluid for-light" style="height: 50px" src="{{asset('assets/images/logo/logo.png')}}"
+                     alt="">
+                <img class="img-fluid for-dark" style="height: 50px" src="{{asset('assets/images/logo/logo_dark.png')}}"
+                     alt="">
             </a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"></i></div>
@@ -53,41 +55,44 @@
                             </a>
                         </li>
                     @else
+                        @if (auth()->user()->school->upload1!=null or auth()->user()->school->upload2!=null)
+                            <li class="sidebar-list">
+                                <a class="sidebar-link sidebar-title link-nav" href="{{ route('student.index') }}">
+                                    <i class="fas fa-graduation-cap"></i><span> Siswa</span>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+                    @if (auth()->user()->school_id==null or auth()->user()->school->upload1!=null or auth()->user()->school->upload2!=null)
                         <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('student.index') }}">
-                                <i class="fas fa-graduation-cap"></i><span> Siswa</span>
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',1) }}">
+                                <i class="fas fa-basketball-ball"></i><span> Pertandingan Sepakbola</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',4) }}">
+                                <i class="fas fa-volleyball-ball"></i><span> Pertandingan Voli Putra</span>
                             </a>
                         </li>
 
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',5) }}">
+                                <i class="fas fa-volleyball-ball"></i><span> Pertandingan Voli Putri</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',6) }}">
+                                <i class="fas fa-baseball-ball"></i><span> Pertandingan Kasti Putra</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',7) }}">
+                                <i class="fas fa-baseball-ball"></i><span> Pertandingan Kasti Putri</span>
+                            </a>
+                        </li>
                     @endif
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',1) }}">
-                            <i class="fas fa-basketball-ball"></i><span> Pertandingan Sepakbola</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',4) }}">
-                            <i class="fas fa-volleyball-ball"></i><span> Pertandingan Voli Putra</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',5) }}">
-                            <i class="fas fa-volleyball-ball"></i><span> Pertandingan Voli Putri</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',6) }}">
-                            <i class="fas fa-baseball-ball"></i><span> Pertandingan Kasti Putra</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',7) }}">
-                            <i class="fas fa-baseball-ball"></i><span> Pertandingan Kasti Putri</span>
-                        </a>
-                    </li>
 
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title link-nav">

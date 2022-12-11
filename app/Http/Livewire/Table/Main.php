@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Table;
 
-use App\Models\GoodReceipt;
 use App\Models\Driver;
+use App\Models\GoodReceipt;
 use App\Models\Invoice;
 use App\Models\MatchMaking;
 use App\Models\Material;
@@ -11,11 +11,11 @@ use App\Models\MaterialMutation;
 use App\Models\Receipt;
 use App\Models\Report;
 use App\Models\School;
+use App\Models\Sport;
 use App\Models\Student;
 use App\Models\TravelPermit;
 use Livewire\Component;
 use Livewire\WithPagination;
-use PhpParser\Node\Stmt\Case_;
 
 class Main extends Component
 {
@@ -84,9 +84,17 @@ class Main extends Component
                 $data = School::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.school', "datas" => $data,];
                 break;
+            case 'sport':
+                $data = Sport::query()->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.sport', "datas" => $data,];
+                break;
             case 'schoolDetail':
-                $data = Student::searchSchool($this->search,$this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                $data = Student::searchSchool($this->search, $this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.student', "datas" => $data,];
+                break;
+            case 'sportDetail':
+                $data = Sport::query()->whereSportId($this->dataId)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.school', "datas" => $data,];
                 break;
             case 'student':
                 $data = Student::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
