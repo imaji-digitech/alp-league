@@ -51,7 +51,7 @@
                         </a> <br>
                         dan intagram kami
                         <a href="http://instagram.com/imajisociopreneur/" style="text-decoration: none; color: #a11c5f">
-                            <i class="fa fa-instagram" style="font-size: 1.8rem"></i>&nbsp; @imajisociopreneur
+                            <b><i class="fa fa-instagram" style="font-size: 1.8rem"></i>&nbsp; @imajisociopreneur</b>
                         </a>
                     </h2>
 
