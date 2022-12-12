@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\GoodReceiptController;
 use App\Http\Controllers\InvoiceController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TravelPermitController;
+use App\Models\Certificate;
 use App\Models\GoodReceipt;
 use App\Models\Invoice;
 use App\Models\MatchMaking;
@@ -50,6 +52,10 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('bagan', function () {
+        return view('bagan');
+    })->name('bagan');
+
     Route::resource('match-making', MatchMakingController::class)->only('index','show','create','edit');
 
     Route::get('match-making/download/{id}', function ($id) {
@@ -57,8 +63,30 @@ Route::middleware(['auth:sanctum',])->group(function () {
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('pdf.presence-match', compact('match'))->setPaper('a4');
         return $pdf->stream($match->sport->title.'-'.$match->title.'.pdf');
-//        return view('pdf.presence');
     })->name('match-making.download');
+
+
+
+    Route::resource('certificate', CertificateController::class)->only('index','create');
+    Route::get('certificate/school/{schoolId}',[CertificateController::class,'show'])->name('certificate.show');
+    Route::get('certificate/champion/{schoolId}/{sportId}',[CertificateController::class,'champion'])->name('certificate.champion');
+
+
+//    Route::get('/setCertificate',function (){
+////        'sport_id', 'school_id', 'title', 'created_at', 'updated_at'
+//        $c= Certificate::create(['school_id' => 44, 'title' =>'peserta']);
+//        $school=School::find(44);
+//        foreach ($school->students as $a){
+//            $count=\App\Models\CertificateDetail::get()->count()+405;
+//            \App\Models\CertificateDetail::create(['student_id'=>$a->id, 'certificate_id'=>$c->id,'number'=>"13.$count.A/XII/2022",]);
+//        }
+//    });
+
+//    Route::get('certificate', function () {
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadView('pdf.certificate')->setPaper('a4','landscape');
+//        return $pdf->stream('certificate.pdf');
+//    })->name('match-making.download');
 
 
 //    Route::get('pdf', function () {
@@ -71,24 +99,33 @@ Route::middleware(['auth:sanctum',])->group(function () {
 
 
     Route::get('/school', function (){
+        if(auth()->user()->school_id!=null){
+            abort(403);
+        }
         return view('pages.school.index');
     })->name('school');
 
     Route::get('/school/{id}', function ($id){
+        if(auth()->user()->school_id!=null){
+            abort(403);
+        }
         return view('pages.school.show',compact('id'));
     })->name('school.show');
 
     Route::get('/student-all', function (){
+        if(auth()->user()->school_id!=null){
+            abort(403);
+        }
         return view('pages.student.all');
     })->name('student.all');
 
     Route::get('/student', function (){
         return view('pages.student.index');
     })->name('student.index');
-
-    Route::get('/student/create', function (){
-        return view('pages.student.create');
-    })->name('student.create');
+//
+//    Route::get('/student/create', function (){
+//        return view('pages.student.create');
+//    })->name('student.create');
 
     Route::get('/student/edit/{id}', function ($id){
         return view('pages.student.edit',compact('id'));
@@ -102,6 +139,9 @@ Route::middleware(['auth:sanctum',])->group(function () {
     })->name('download.surat-perwalian-alp-league-kabupaten-2022');
 
     Route::get('/download', function () {
+        if(auth()->user()->school_id!=null){
+            abort(403);
+        }
         $school= School::get();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('pdf.id-password', compact('school'))->setPaper('a4','landscape');
