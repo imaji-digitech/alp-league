@@ -8,18 +8,22 @@
                 <table class="table">
                     <thead>
                     <td><b>Sekolah</b></td>
-                    <td><b>Cabor</b></td>
+                    <td><b>Cabang olahraga yang telah diikuti</b></td>
                     <td><b>Jumlah siswa</b></td>
                     </thead>
                     @foreach($generalData['clear'] as $data)
                         <tr>
                             <td>{{ $data->name }}</td>
+                            @php
+                                $query="SELECT sports.title, count(*) as jumlah FROM `students` JOIN sports ON sport_id=sports.id WHERE school_id = $data->id GROUP BY sports.title;";
+                                $d= \Illuminate\Support\Facades\DB::select(\Illuminate\Support\Facades\DB::raw($query))
+                            @endphp
                             <td>
-                                @foreach($data->schoolSports as $d)
-                                    {{ $d->sport->title }}
-                                    ({{ $data->students->where('sport_id',$d->sport_id)->count() }}) <br>
+                                @foreach($d as $dd)
+                                    {{ $dd->title }} ({{$dd->jumlah}})<br>
                                 @endforeach
                             </td>
+
                             <td class="text-center">{{ $data->students->count() }}</td>
                         </tr>
                     @endforeach
