@@ -7,7 +7,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('student.create') }}" class="btn btn-primary">Tambah data siswa</a>
+{{--                    <a href="{{ route('student.create') }}" class="btn btn-primary">Tambah data siswa</a>--}}
                     <livewire:table.main name="student" :model="\App\Models\Student::class"/>
                 </div>
             </div>
