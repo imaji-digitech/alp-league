@@ -21,12 +21,11 @@ class MatchMaking extends Component
     public $school;
 
     public function mount(){
-        $this->optionTeam=eloquent_to_options(School::get(),'id','name');
+        $this->optionTeam=eloquent_to_options(School::whereNotNull('upload1')->whereNotNull('upload1')->get(),'id','name');
         $this->optionSport=eloquent_to_options(Sport::get());
         $this->data=form_model(Model::class,$this->dataId);
     }
     public function create(){
-//        dd('asd');
         $this->validate();
         $this->resetErrorBag();
         if ($this->data['date_match']==null){
@@ -37,6 +36,23 @@ class MatchMaking extends Component
         $this->emit('swal:alert', [
             'type' => 'success',
             'title' => 'Berhasil menambahkan data',
+            'timeout' => 3000,
+            'icon' => 'success'
+        ]);
+        $this->emit('redirect', route(  'match-making.index'));
+
+    }
+
+    public function update(){
+        $this->validate();
+        $this->resetErrorBag();
+        if ($this->data['date_match']==null){
+            $this->data['date_match']=Carbon::now();
+        }
+        Model::find($this->dataId)->update($this->data);
+        $this->emit('swal:alert', [
+            'type' => 'success',
+            'title' => 'Berhasil diubah',
             'timeout' => 3000,
             'icon' => 'success'
         ]);

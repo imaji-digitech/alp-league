@@ -36,6 +36,46 @@
     <img style="width: 100%" src="{{ public_path('alp-league/kop-surat-imaji-socioprenuer.png') }}" alt="">
 </header>
 
+
+<main style="padding: 35px 10px;font-family: 'Times New Roman'">
+    <br>
+    <h4 style="text-align: center">
+        FORMULIR PERGANTIAN PEMAIN
+    </h4>
+    <br>
+    @for($i=1;$i<=2;$i++)
+    <table class="peserta" style="width: 100%">
+        <tr>
+            <th style="background: yellow; width: 50px" colspan="4">
+                <h3 style="text-transform: uppercase ">{{ $match->{'school'.$i}->name }}</h3>
+            </th>
+
+        </tr>
+        <tr>
+            <th style="background: yellow; width: 50px" colspan="2">
+                Pemain Masuk
+            </th>
+            <th style="background: yellow; width: 50px" colspan="2">
+                Pemain Keluar
+            </th>
+        </tr>
+        <tr>
+            <th>Nama Pemain</th>
+            <th>Nomor Punggung</th>
+            <th>Nama Pemain</th>
+            <th>Nomor Punggung</th>
+        </tr>
+        <tr>
+            <th style="height: 270px"></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+        <br>
+    @endfor
+</main>
+<div style="page-break-after: always"></div>
 <main style="padding: 35px 10px;font-family: 'Times New Roman'">
     @php
         $student1 = \App\Models\Student::whereSportId($match->sport_id)->whereSchoolId($match->school1_id)->get();
@@ -156,8 +196,16 @@
             <td style="width: 35%"></td>
         </tr>
         <tr>
-            <td style="width: 30%"></td>
-            <td style="width: 35%"></td>
+            <td style="width: 30%">
+                (...............................................)
+                <br>
+                (Official {{ $match->school1->name }})
+            </td>
+            <td style="width: 35%">
+                (...............................................)
+                <br>
+                (Official {{ $match->school2->name }})
+            </td>
             <td style="width: 35%">
                 {{ $match->supervisor }}
                 <br>
@@ -167,102 +215,104 @@
     </table>
 </main>
 
-<div style="page-break-after: always"></div>
-@for($z=1;$z<=2;$z++)
-    <main style="padding: 35px 70px;font-family: 'Times New Roman'">
-        <br>
-        <h4 style="text-align: center">Daftar Hadir Peserta ALP League Kabupaten 2022</h4>
-        <br>
-        <table>
-            <tr>
-                <td>Tempat Pelaksanaan</td>
-                <td style="padding: 0 10px">:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Pengawas Pertandingan</td>
-                <td style="padding: 0 10px">:</td>
-                <td>{{ $match->supervisor }}</td>
-            </tr>
-            <tr>
-                <td>Tanggal</td>
-                <td style="padding: 0 10px">:</td>
-                <td>{{ \Carbon\Carbon::parse($match->date_match)->isoFormat('dddd, D MMMM Y') }}</td>
-            </tr>
-            <tr>
-                <td>Sekolah</td>
-                <td style="padding: 0 10px">:</td>
-                <td>{{ $match->{'school'.$z}->name }}</td>
-            </tr>
-            <tr>
-                <td>Cabang Olahraga</td>
-                <td style="padding: 0 10px">:</td>
-                <td>{{ $match->sport->title }}</td>
-            </tr>
-        </table>
-        <br>
+{{--<div style="page-break-after: always"></div>--}}
+{{--@for($z=1;$z<=2;$z++)--}}
+{{--    <main style="padding: 35px 70px;font-family: 'Times New Roman'">--}}
+{{--        <br>--}}
+{{--        <h4 style="text-align: center">Daftar Hadir Peserta ALP League Kabupaten 2022</h4>--}}
+{{--        <br>--}}
+{{--        <table>--}}
+{{--            <tr>--}}
+{{--                <td>Tempat Pelaksanaan</td>--}}
+{{--                <td style="padding: 0 10px">:</td>--}}
+{{--                <td></td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td>Pengawas Pertandingan</td>--}}
+{{--                <td style="padding: 0 10px">:</td>--}}
+{{--                <td>{{ $match->supervisor }}</td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td>Tanggal</td>--}}
+{{--                <td style="padding: 0 10px">:</td>--}}
+{{--                <td>{{ \Carbon\Carbon::parse($match->date_match)->isoFormat('dddd, D MMMM Y') }}</td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td>Sekolah</td>--}}
+{{--                <td style="padding: 0 10px">:</td>--}}
+{{--                <td>{{ $match->{'school'.$z}->name }}</td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td>Cabang Olahraga</td>--}}
+{{--                <td style="padding: 0 10px">:</td>--}}
+{{--                <td>{{ $match->sport->title }}</td>--}}
+{{--            </tr>--}}
+{{--        </table>--}}
+{{--        <br>--}}
 
-        {{--    <div style="width: 100%; background: #0a6aa1" >--}}
-        <table class="peserta" style="width: 100%">
+{{--        --}}{{--    <div style="width: 100%; background: #0a6aa1" >--}}
+{{--        <table class="peserta" style="width: 100%">--}}
 
-            <tr>
-                <th style="background: yellow; width: 50px">
-                    No.
-                </th>
-                <th style="background: yellow">
-                    Nama
-                </th>
-                <th style="background: yellow; width:200px">
-                    NISN/Official
-                </th>
-            </tr>
-            <tr>
-                <td style="font-size: 13px;text-align: center">1</td>
-                <td></td>
-                <td style="font-size: 13px;text-align: center">Official</td>
-            </tr>
-            @for($i=2;$i<=11;$i++)
-                <tr>
-                    <td style="font-size: 13px;text-align: center">{{ $i }}</td>
-                    <td style="font-size: 13px; text-transform: uppercase; padding-left: 10px">@isset(${'student'.$z}[$i-2]) {{ ${'student'.$z}[$i-2]->name }} @endisset</td>
-                    <td style="font-size: 13px;text-align: center">@isset(${'student'.$z}[$i-2]) {{ ${'student'.$z}[$i-2]->nisn }} @endisset</td>
-                </tr>
-            @endfor
+{{--            <tr>--}}
+{{--                <th style="background: yellow; width: 50px">--}}
+{{--                    No.--}}
+{{--                </th>--}}
+{{--                <th style="background: yellow">--}}
+{{--                    Nama--}}
+{{--                </th>--}}
+{{--                <th style="background: yellow; width:200px">--}}
+{{--                    NISN/Official--}}
+{{--                </th>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td style="font-size: 13px;text-align: center">1</td>--}}
+{{--                <td></td>--}}
+{{--                <td style="font-size: 13px;text-align: center">Official</td>--}}
+{{--            </tr>--}}
+{{--            @for($i=2;$i<=11;$i++)--}}
+{{--                <tr>--}}
+{{--                    <td style="font-size: 13px;text-align: center">{{ $i }}</td>--}}
+{{--                    <td style="font-size: 13px; text-transform: uppercase; padding-left: 10px">@isset(${'student'.$z}[$i-2]) {{ ${'student'.$z}[$i-2]->name }} @endisset</td>--}}
+{{--                    <td style="font-size: 13px;text-align: center">@isset(${'student'.$z}[$i-2]) {{ ${'student'.$z}[$i-2]->nisn }} @endisset</td>--}}
+{{--                </tr>--}}
+{{--            @endfor--}}
 
-        </table>
-        <br><br>
-        <table style="width: 100%;text-align: center">
-            <tr>
-                <td style="width: 35%"></td>
-                <td style="width: 30%"></td>
-                <td style="width: 35%">Jember, {{ \Carbon\Carbon::parse($match->date_match)->isoFormat('D MMMM Y') }}</td>
-            </tr>
-            <tr>
-                <td style="width: 35%"></td>
-                <td style="width: 30%"></td>
-                <td style="width: 35%">Mengetahui</td>
-            </tr>
-            <tr>
-                <td style="width: 35%"><br><br><br><br></td>
-                <td style="width: 30%"></td>
-                <td style="width: 35%"></td>
-            </tr>
-            <tr>
-                <td style="width: 35%">(.........................................................) <br>(Official/Kapten tim)</td>
-                <td style="width: 30%"></td>
-                <td style="width: 35%">
-                    {{ $match->supervisor }}
-                    <br>
-                    (Pengawas Pertandingan)</td>
-            </tr>
-        </table>
+{{--        </table>--}}
+{{--        <br><br>--}}
+{{--        <table style="width: 100%;text-align: center">--}}
+{{--            <tr>--}}
+{{--                <td style="width: 35%"></td>--}}
+{{--                <td style="width: 30%"></td>--}}
+{{--                <td style="width: 35%">Jember, {{ \Carbon\Carbon::parse($match->date_match)->isoFormat('D MMMM Y') }}</td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td style="width: 35%"></td>--}}
+{{--                <td style="width: 30%"></td>--}}
+{{--                <td style="width: 35%">Mengetahui</td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td style="width: 35%"><br><br><br><br></td>--}}
+{{--                <td style="width: 30%"></td>--}}
+{{--                <td style="width: 35%"></td>--}}
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td style="width: 35%">(.........................................................) <br>(Official/Kapten tim)</td>--}}
+{{--                <td style="width: 30%"></td>--}}
+{{--                <td style="width: 35%">--}}
+{{--                    {{ $match->supervisor }}--}}
+{{--                    <br>--}}
+{{--                    (Pengawas Pertandingan)</td>--}}
+{{--            </tr>--}}
+{{--        </table>--}}
 
 
-    </main>
-    @if($z==1)
-        <div style="page-break-after: always"></div>
-    @endif
-@endfor
+{{--    </main>--}}
+{{--    @if($z==1)--}}
+{{--        <div style="page-break-after: always"></div>--}}
+{{--    @endif--}}
+{{--@endfor--}}
+
+
 
 {{--    <div style="text-align: center">--}}
 {{--        <h6 style="padding: 0;margin: 0"><u>BUKTI {{ $poc->inout==1?'PENGELUARAN':'PENERIMAAN' }} KAS</u></h6>--}}

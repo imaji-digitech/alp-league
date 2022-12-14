@@ -36,10 +36,10 @@
                     </td>
                     <td>{{ $data->supervisor }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
+                        <a target="_blank" href="{{ route('match-making.download',$data->id) }}" class="btn-sm btn-success"> <i style="margin: 0" class="fa fa-download"></i></a>
                         <a target="_blank" href="{{ route('match-making.edit',$data->id) }}" class="btn-sm btn-secondary"> <i style="margin: 0" class="fa fa-edit"></i></a>
-                        <a href="#" class="btn-sm btn-primary"> <i style="margin: 0" class="fa fa-eye"></i></a>
-                        <a target="_blank" href="{{ route('match-making.download',$data->id) }}" class="btn-sm btn-secondary"> <i style="margin: 0" class="fa fa-download"></i></a>
-                        <a href="#" class="btn-sm btn-danger"> <i style="margin: 0" class="fa fa-trash"></i></a>
+                        {{--                        <a href="#" class="btn-sm btn-primary"> <i style="margin: 0" class="fa fa-eye"></i></a>--}}
+                        <a href="#" wire:click="deleteItem({{ $data->id }})" class="btn-sm btn-danger"> <i style="margin: 0" class="fa fa-trash"></i></a>
                     </td>
                 </tr>
             @endforeach

@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 @livewire('dashboard-admin')
-                @foreach(MatchMaking::where('update_score',0)->get() as $match)
+                @foreach( MatchMaking::where('update_score',0)->get() as $match )
                     @livewire('match-making-update-score',['match'=>$match,'school'=>1])
                 @endforeach
             @endif

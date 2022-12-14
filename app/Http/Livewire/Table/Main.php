@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Table;
 
+use App\Models\Certificate;
 use App\Models\Driver;
 use App\Models\GoodReceipt;
 use App\Models\Invoice;
@@ -83,6 +84,10 @@ class Main extends Component
             case 'school':
                 $data = School::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.school', "datas" => $data,];
+                break;
+                case 'certificate':
+                $data = Certificate::query()->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.certificate', "datas" => $data,];
                 break;
             case 'sport':
                 $data = Sport::query()->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);

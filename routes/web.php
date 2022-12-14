@@ -19,6 +19,7 @@ use App\Models\MaterialMutation;
 use App\Models\Receipt;
 use App\Models\Report;
 use App\Models\School;
+use App\Models\Sport;
 use App\Models\TravelPermit;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\App;
@@ -65,6 +66,34 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return $pdf->stream($match->sport->title.'-'.$match->title.'.pdf');
     })->name('match-making.download');
 
+    Route::get('sport/presence/download/{id}', function ($id) {
+        $sport= Sport::findOrFail($id);
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadView('pdf.presence-sport', compact('sport'))->setPaper('a4');
+//        return $pdf->stream('Daftar hadir -'.$sport->title.'.pdf');
+        $headers = array(
+            "Content-type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=Daftar hadir $sport->title",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        );
+
+        $callback = function () use ($sport) {
+            $delimiter = ';';
+            $file = fopen('php://output', 'w');
+            fputcsv($file, [''],$delimiter);
+            fputcsv($file, ['Nomer Dada',"Nama",'Asal lembaga','tanda tangan'],$delimiter);
+            foreach ($sport->students as $student){
+                fputcsv($file, ['',$student->name,$student->school->name,''],$delimiter);
+            }
+            fclose($file);
+        };
+        return response()->stream($callback, 200, $headers);
+
+
+    })->name('sport.presence.download');
+
 
 
     Route::resource('certificate', CertificateController::class)->only('index','create');
@@ -72,15 +101,10 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('certificate/champion/{schoolId}/{sportId}',[CertificateController::class,'champion'])->name('certificate.champion');
 
 
-//    Route::get('/setCertificate',function (){
-////        'sport_id', 'school_id', 'title', 'created_at', 'updated_at'
-//        $c= Certificate::create(['school_id' => 44, 'title' =>'peserta']);
-//        $school=School::find(44);
-//        foreach ($school->students as $a){
-//            $count=\App\Models\CertificateDetail::get()->count()+405;
-//            \App\Models\CertificateDetail::create(['student_id'=>$a->id, 'certificate_id'=>$c->id,'number'=>"13.$count.A/XII/2022",]);
-//        }
-//    });
+    Route::get('/setCertificate',function (){
+//        'sport_id', 'school_id', 'title', 'created_at', 'updated_at'
+
+    });
 
 //    Route::get('certificate', function () {
 //        $pdf = App::make('dompdf.wrapper');

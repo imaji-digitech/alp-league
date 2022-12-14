@@ -53,12 +53,12 @@
                         @endif
                     </td>
                     @php
-                    $query="SELECT sports.title FROM `students` JOIN sports ON sport_id=sports.id WHERE school_id = $data->id GROUP BY sports.title;";
-                    $d= \Illuminate\Support\Facades\DB::select(\Illuminate\Support\Facades\DB::raw($query))
+                        $query="SELECT sports.title, count(*) as jumlah FROM `students` JOIN sports ON sport_id=sports.id WHERE school_id = $data->id GROUP BY sports.title;";
+                        $d= \Illuminate\Support\Facades\DB::select(\Illuminate\Support\Facades\DB::raw($query))
                     @endphp
                     <td>
                         @foreach($d as $dd)
-                            {{ $dd->title }},
+                            {{ $dd->title }} ({{$dd->jumlah}})<br>
                         @endforeach
                     </td>
                     <td>{{ $data->students->count() }}</td>
