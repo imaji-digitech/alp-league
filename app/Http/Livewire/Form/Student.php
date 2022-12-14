@@ -33,7 +33,13 @@ class Student extends Component
         if ($this->thumbnail != null) {
             $image = $this->thumbnail;
             $filename = Str::slug($this->data['nisn']) . '-' . $this->data['name'] . '-' . rand(0, 1000) . '.' . $image->getClientOriginalExtension();
-            $this->data['report'] = 'reports/' . $filename;
+            $this->data['report'] = 'report/' . $filename;
+
+            $image = Image::make($image)->resize(1080, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $image->stream();
+
             Storage::disk('local')->put('public/report/' . $filename, $image, 'public');
         }
         Model::find($this->dataId)->update($this->data);
