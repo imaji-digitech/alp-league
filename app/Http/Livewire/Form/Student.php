@@ -23,7 +23,10 @@ class Student extends Component
     {
         $this->data = form_model(Model::class, $this->dataId);
         $this->optionSport = eloquent_to_options(Sport::get());
-        $this->data['school_id'] = auth()->user()->school_id;
+        if ($this->action=='create'){
+            $this->data['school_id'] = auth()->user()->school_id;
+        }
+
     }
 
     public function update()
