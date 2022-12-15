@@ -35,6 +35,13 @@ class Certificate extends Component
             $count=\App\Models\CertificateDetail::get()->count()+405;
             \App\Models\CertificateDetail::create(['student_id'=>$a->id, 'certificate_id'=>$c->id,'number'=>"13.$count.A/XII/2022",]);
         }
+        $this->emit('swal:alert', [
+            'type' => 'success',
+            'title' => 'Berhasil diubah',
+            'timeout' => 3000,
+            'icon' => 'success'
+        ]);
+        $this->data['school_id']=null;
     }
 
     public function render()
