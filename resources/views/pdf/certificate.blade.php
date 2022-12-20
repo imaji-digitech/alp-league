@@ -53,7 +53,7 @@
             </h1>
 
         </div>
-        <div style="margin-top: 30px; text-transform: uppercase ">
+        <div style="margin-top: 20px; text-transform: uppercase ">
             <h5>Sebagai {{ $certificate->title }} {{ $certificate->sport_id? $certificate->sport->title:'' }} dalam ALP LEAGUE KABUPATEN 2022</h5>
         </div>
     </main>
