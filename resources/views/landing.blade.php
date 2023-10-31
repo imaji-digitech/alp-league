@@ -88,7 +88,7 @@
                         <div style="text-align: left;" class="col-md-7 title">
                             <p >SELAMAT DATANG</p>
                             <h1 >
-                                ALP LEAGUE 2022
+                                ALP LEAGUE 2023
                             </h1>
                             <h2>
                                 TINGKAT KABUPATEN
