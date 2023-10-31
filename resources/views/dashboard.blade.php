@@ -55,7 +55,7 @@
 {{--                        </a>--}}
 {{--                    </h2>--}}
 
-                @endif
+{{--                @endif--}}
             @else
                 @livewire('dashboard-data')
                 <div class="card">
