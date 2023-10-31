@@ -15,8 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $users = [
-//            'sdnsidodadi01@alp2022.id',
+        $users = [
+            'sdnkesilir05@alp2023.id',
+            'mialhidayah@alp2023.id',
+            'sdnmangli02@alp2023.id',
+            'mida02@alp2023.id',
+            'mimuhammadiyah01watukebo@alp2023.id',
+        ];
+
+//       	  'sdnsidodadi01@alp2022.id',
 //            'sdnsidodadi02@alp2022.id',
 //            'sdnsidodadi03@alp2022.id',
 //            'misunangirisidodadi@alp2022.id',
@@ -79,6 +86,16 @@ class DatabaseSeeder extends Seeder
 //            'sdnkesilir02@alp2022.id',
 //            'sdnkesilir03@alp2022.id',
 //        ];
+
+                $userName = [
+            'SDN Kesilir 05',
+            'SDN Al Hidayah Mangli',
+            'SDN Mangli 02',
+            'MI Darussalam 02',
+            'MI MUHAMMADIYAH 1 WATUKEBO',
+                    ];
+
+
 //
 //        $userName = [
 //            'SDN Sidodadi 01',
@@ -144,6 +161,16 @@ class DatabaseSeeder extends Seeder
 //            'SDN Kesilir 03',
 //        ];
 //
+
+                $userVillage = [
+            'Kesilir',
+            'Mangli',
+            'Mangli',
+            'Bagon',
+            'Andongsari',
+];
+
+
 //        $userVillage = [
 //            'Sidodadi',
 //            'Sidodadi',
@@ -210,25 +237,25 @@ class DatabaseSeeder extends Seeder
 //            'Kesilir',
 //        ];
 //
-//        for ($i = 0 ; $i<count($users); $i++){
-//            $school=School::create([
-//                'name' => $userName[$i],
-//                'village'=>$userVillage[$i],
-//            ]);
-//
-//            User::create([
-//                'name' => $userName[$i],
-//                'email' => $users[$i],
-//                'password' => bcrypt('alpleague2022'),
-//                'school_id'=>$school->id
-//            ]);
-//        }
+        for ($i = 0 ; $i<count($users); $i++){
+            $school=School::create([
+                'name' => $userName[$i],
+                'village'=>$userVillage[$i],
+            ]);
 
             User::create([
-                'name' => 'admin',
-                'email' => 'admin@admin',
-                'password' => bcrypt('adminalpleague2023'),
+                'name' => $userName[$i],
+                'email' => $users[$i],
+                'password' => bcrypt('alpleague2023'),
+                'school_id'=>$school->id
             ]);
+        }
+
+//            User::create([
+//                'name' => 'admin',
+//                'email' => 'admin@admin',
+//                'password' => bcrypt('adminalpleague2023'),
+//            ]);
 
     }
 }
