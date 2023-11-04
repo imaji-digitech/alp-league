@@ -155,12 +155,12 @@ Route::middleware(['auth:sanctum',])->group(function () {
         return view('pages.student.edit',compact('id'));
     })->name('student.edit');
 
-    Route::get('/download/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2022',function (){
-        return response()->download('alp-league/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2022.docx');
-    })->name('download.surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2022');
-    Route::get('/download/surat-perwalian-alp-league-kabupaten-2022',function (){
-        return response()->download('alp-league/surat-perwalian-alp-league-kabupaten-2022.docx');
-    })->name('download.surat-perwalian-alp-league-kabupaten-2022');
+    Route::get('/download/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2023',function (){
+        return response()->download('alp-league/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2023.docx');
+    })->name('download.surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2023');
+    Route::get('/download/surat-perwalian-alp-league-kabupaten-2023',function (){
+        return response()->download('alp-league/surat-perwalian-alp-league-kabupaten-2023.docx');
+    })->name('download.surat-perwalian-alp-league-kabupaten-2023');
 
     Route::get('/download', function () {
         if(auth()->user()->school_id!=null){
