@@ -4,6 +4,8 @@
     <x-form.input type="text" title="Tempat lahir" model="data.place_birth"/>
     <x-form.input type="date" title="Tanggal lahir" model="data.date_birth"/>
     <x-form.input type="text" title="Nama ibu kandung" model="data.mother_name"/>
+    <x-form.input type="text" title="Nama Ayah kandung" model="data.father_name"/>
+    <x-form.input type="text" title="Pekerjaan Orang tua" model="data.parent_job"/>
     <x-form.select :options="$optionSport" :selected="$data['sport_id']" title="Cabang olahraga" model="data.sport_id"/>
     <x-form.input type="file" title="Foto halaman pertama" model="thumbnail" accept="image/*"/>
     <div wire:loading wire:target="thumbnail">

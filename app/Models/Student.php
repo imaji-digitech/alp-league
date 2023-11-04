@@ -32,7 +32,7 @@ class Student extends Model
     /**
      * @var array
      */
-    protected $fillable = ['sport_id', 'school_id', 'name', 'nisn', 'place_birth', 'date_birth', 'mother_name', 'report', 'created_at', 'updated_at'];
+    protected $fillable = ['sport_id', 'school_id', 'name', 'nisn', 'place_birth', 'date_birth', 'mother_name','father_name','parent_job', 'report', 'created_at', 'updated_at'];
 
     public static function search($query)
     {
@@ -87,7 +87,7 @@ class Student extends Model
 
     public static function getForm()
     {
-        return ['sport_id', 'school_id', 'name', 'nisn', 'place_birth', 'date_birth', 'mother_name', 'report',];
+        return ['sport_id', 'school_id', 'name', 'nisn', 'place_birth', 'date_birth', 'mother_name','father_name','parent_job', 'report',];
     }
 
     /**

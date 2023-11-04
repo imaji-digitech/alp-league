@@ -96,6 +96,8 @@ class Student extends Component
                 'data.place_birth' => 'required|max:255',
                 'data.date_birth' => 'required',
                 'data.mother_name' => 'required|max:255',
+                'data.father_name' => 'required|max:255',
+                'data.parent_job' => 'required|max:255',
                 'thumbnail' => 'required'
             ];
         } else {
