@@ -68,36 +68,36 @@
                             </li>
                         @endif
                     @endif
-                    @if (auth()->user()->school_id==null or auth()->user()->school->upload1!=null or auth()->user()->school->upload2!=null)
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',1) }}">
-                                <i class="fas fa-basketball-ball"></i><span> Pertandingan Sepakbola</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',4) }}">
-                                <i class="fas fa-volleyball-ball"></i><span> Pertandingan Voli Putra</span>
-                            </a>
-                        </li>
+{{--                    @if (auth()->user()->school_id==null or auth()->user()->school->upload1!=null or auth()->user()->school->upload2!=null)--}}
+{{--                        <li class="sidebar-list">--}}
+{{--                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',1) }}">--}}
+{{--                                <i class="fas fa-basketball-ball"></i><span> Pertandingan Sepakbola</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="sidebar-list">--}}
+{{--                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',4) }}">--}}
+{{--                                <i class="fas fa-volleyball-ball"></i><span> Pertandingan Voli Putra</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',5) }}">
-                                <i class="fas fa-volleyball-ball"></i><span> Pertandingan Voli Putri</span>
-                            </a>
-                        </li>
+{{--                        <li class="sidebar-list">--}}
+{{--                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',5) }}">--}}
+{{--                                <i class="fas fa-volleyball-ball"></i><span> Pertandingan Voli Putri</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',6) }}">
-                                <i class="fas fa-baseball-ball"></i><span> Pertandingan Kasti Putra</span>
-                            </a>
-                        </li>
+{{--                        <li class="sidebar-list">--}}
+{{--                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',6) }}">--}}
+{{--                                <i class="fas fa-baseball-ball"></i><span> Pertandingan Kasti Putra</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',7) }}">
-                                <i class="fas fa-baseball-ball"></i><span> Pertandingan Kasti Putri</span>
-                            </a>
-                        </li>
-                    @endif
+{{--                        <li class="sidebar-list">--}}
+{{--                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('match-making.show',7) }}">--}}
+{{--                                <i class="fas fa-baseball-ball"></i><span> Pertandingan Kasti Putri</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
 
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title link-nav">
