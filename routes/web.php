@@ -148,9 +148,9 @@ Route::middleware(['auth:sanctum',])->group(function () {
     })->name('student.index');
 //
     Route::get('/student/create', function (){
-        if(auth()->user()->school_id!=null){
-            return redirect()->route('dashboard');
-        }
+//        if(auth()->user()->school_id!=null){
+//            return redirect()->route('dashboard');
+//        }
         return view('pages.student.create');
     })->name('student.create');
 
