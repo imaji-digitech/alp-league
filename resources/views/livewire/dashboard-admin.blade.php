@@ -53,6 +53,56 @@
             </div>
         </div>
     </div>
+
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header" style="padding: 20px">
+                <h5>Sekolah yang belum mengupload surat pertanyaan</h5>
+            </div>
+            <div class="card-body" style="padding: 20px">
+                <table class="table">
+                    <thead>
+                    <td><b>Nama Sekolah</b></td>
+                    <td style="text-align: center"><b>Surat 1</b></td>
+                    <td style="text-align: center"><b>Surat 2</b></td>
+                    </thead>
+                    <tbpdy>
+                        @foreach(\App\Models\School::where('upload1','=',null)->orWhere('upload2','=',null)->get() as $data)
+                            <tr>
+                                <td><b>{{ $data->name }}</b></td>
+                                <td style="text-align: center">{{ $data->upload1?'Sudah terupload':'-' }}</td>
+                                <td style="text-align: center">{{ $data->upload2?'Sudah terupload':'-' }}</td>
+                            </tr>
+                        @endforeach
+                    </tbpdy>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header" style="padding: 20px">
+                <h5>Sekolah yang belum mengupload siswa sama sekali</h5>
+            </div>
+            <div class="card-body" style="padding: 20px">
+                <table class="table">
+                    <thead>
+                    <td><b>Nama Sekolah</b></td>
+                    </thead>
+                    <tbpdy>
+                        @foreach(\App\Models\School::
+where('upload1','!=',null)->where('upload2','!=',null)->
+doesntHave('students')->get() as $data)
+                            <tr>
+                                <td><b>{{ $data->name }}</b></td>
+                            </tr>
+                        @endforeach
+                    </tbpdy>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="padding: 20px">
