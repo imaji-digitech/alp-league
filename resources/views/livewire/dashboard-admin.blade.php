@@ -1,4 +1,4 @@
-@php use App\Models\Sport;use Illuminate\Support\Facades\DB; @endphp
+@php use App\Models\School;use App\Models\Sport;use Illuminate\Support\Facades\DB; @endphp
 <div class="row">
     <div class="col-sm-6">
         <div class="card">
@@ -36,6 +36,7 @@
             <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
+                    <td><b>#</b></td>
                     <td><b>Kecamatan</b></td>
                     <td style="text-align: center"><b>Jumlah sekolah</b></td>
                     <td style="text-align: center"><b>Jumlah siswa</b></td>
@@ -63,12 +64,13 @@
             <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
+                    <td><b>#</b></td>
                     <td><b>Nama Sekolah</b></td>
                     <td style="text-align: center"><b>Surat 1</b></td>
                     <td style="text-align: center"><b>Surat 2</b></td>
                     </thead>
                     <tbpdy>
-                        @foreach(\App\Models\School::where('upload1','=',null)->orWhere('upload2','=',null)->get() as $index=>$data)
+                        @foreach(School::where('upload1','=',null)->orWhere('upload2','=',null)->get() as $index=>$data)
                             <tr>
                                 <td><b>{{ $index+1 }}</b></td>
                                 <td><b>{{ $data->name }}</b></td>
@@ -93,7 +95,7 @@
                     <td><b>Nama Sekolah</b></td>
                     </thead>
                     <tbpdy>
-                        @foreach(\App\Models\School::
+                        @foreach(School::
 where('upload1','!=',null)->where('upload2','!=',null)->
 doesntHave('students')->get() as $index=>$data)
                             <tr>
@@ -115,12 +117,16 @@ doesntHave('students')->get() as $index=>$data)
             <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
+
+                    <td><b>#</b></td>
                     <td><b>Sekolah</b></td>
                     <td><b>Cabang olahraga yang telah diikuti</b></td>
                     <td><b>Jumlah siswa</b></td>
                     </thead>
-                    @foreach($generalData['clear'] as $data)
+                    @foreach($generalData['clear'] as $index=>$data)
                         <tr>
+
+                            <td>{{ $index+1 }}</td>
                             <td>{{ $data->name }}</td>
                             @php
                                 $query="SELECT sports.title, count(*) as jumlah FROM `students` JOIN sports ON sport_id=sports.id WHERE school_id = $data->id GROUP BY sports.title;";
