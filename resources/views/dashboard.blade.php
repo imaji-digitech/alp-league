@@ -58,11 +58,11 @@
 {{--                @endif--}}
             @else
                 @livewire('dashboard-data')
-                <div class="card">
-                    <div class="card-body">
-                        @livewire('form.match-making',['action'=>'create'])
-                    </div>
-                </div>
+{{--                <div class="card">--}}
+{{--                    <div class="card-body">--}}
+{{--                        @livewire('form.match-making',['action'=>'create'])--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 @livewire('dashboard-admin')
                 @foreach( MatchMaking::where('update_score',0)->get() as $match )
                     @livewire('match-making-update-score',['match'=>$match,'school'=>1])
