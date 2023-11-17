@@ -41,8 +41,9 @@
                     <td style="text-align: center"><b>Jumlah siswa</b></td>
                     </thead>
                     <tbpdy>
-                        @foreach($dataDistrict as $data)
+                        @foreach($dataDistrict as $index=>$data)
                             <tr>
+                                <td><b>{{ $index+1 }}</b></td>
                                 <td><b>{{ $data->village }}</b></td>
                                 <td style="text-align: center">{{ $data->school }}</td>
                                 <td style="text-align: center">{{ $data->count }}</td>
@@ -67,8 +68,9 @@
                     <td style="text-align: center"><b>Surat 2</b></td>
                     </thead>
                     <tbpdy>
-                        @foreach(\App\Models\School::where('upload1','=',null)->orWhere('upload2','=',null)->get() as $data)
+                        @foreach(\App\Models\School::where('upload1','=',null)->orWhere('upload2','=',null)->get() as $index=>$data)
                             <tr>
+                                <td><b>{{ $index+1 }}</b></td>
                                 <td><b>{{ $data->name }}</b></td>
                                 <td style="text-align: center">{{ $data->upload1?'Sudah terupload':'-' }}</td>
                                 <td style="text-align: center">{{ $data->upload2?'Sudah terupload':'-' }}</td>
@@ -87,13 +89,15 @@
             <div class="card-body" style="padding: 20px">
                 <table class="table">
                     <thead>
+                    <td>#</td>
                     <td><b>Nama Sekolah</b></td>
                     </thead>
                     <tbpdy>
                         @foreach(\App\Models\School::
 where('upload1','!=',null)->where('upload2','!=',null)->
-doesntHave('students')->get() as $data)
+doesntHave('students')->get() as $index=>$data)
                             <tr>
+                                <td><b>{{ $index+1 }}</b></td>
                                 <td><b>{{ $data->name }}</b></td>
                             </tr>
                         @endforeach
