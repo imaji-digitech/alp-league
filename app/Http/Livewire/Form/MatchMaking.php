@@ -22,7 +22,7 @@ class MatchMaking extends Component
     public $school;
 
     public function mount(){
-        $this->optionTeam=eloquent_to_options(School::whereNotNull('upload1')->whereNotNull('upload1')->orderBy('name')->get(),'id','name');
+        $this->optionTeam=eloquent_to_options(School::orderBy('name')->get(),'id','name');
         $this->optionSport=eloquent_to_options(Sport::get());
         $this->data=form_model(Model::class,$this->dataId);
     }
