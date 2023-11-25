@@ -68,8 +68,8 @@
                     <tr>
                         <td style=" text-align: center" colspan="3">
                             <b>{{ Carbon::parse($match->date_match)->isoFormat('dddd, D MMMM YYYY') }}</b>
-                            <br>
-                            <b>{{ Carbon::parse($match->date_match)->isoFormat('HH:mm') }}</b>
+{{--                            <br>--}}
+{{--                            <b>{{ Carbon::parse($match->date_match)->isoFormat('HH:mm') }}</b>--}}
                         </td>
                     </tr>
                 </table>
