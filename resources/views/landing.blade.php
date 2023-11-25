@@ -279,7 +279,7 @@
                         <div class="round round-two">
                             @for($i=1;$i<=4;$i++)
                                 <ul class="matchup">
-                                    @php($match=MatchMaking::where('key','kasti-putra-16-besar-match-'.$i)->first())
+                                    @php($match=MatchMaking::where('key','kasti-putra-perempat-final-match-'.$i)->first())
                                     <li class="team team-top">{{ $match->school1->name??'Segera' }}<span
                                             class="score">{{ $match->score1??'-' }}</span></li>
                                     <li class="team team-bottom">{{ $match->school2->name??'Segera' }}<span
@@ -292,7 +292,7 @@
                         <div class="round round-three">
                             @for($i=1;$i<=2;$i++)
                                 <ul class="matchup">
-                                    @php($match=MatchMaking::where('key','kasti-putra-perempat-final-match-'.$i)->first())
+                                    @php($match=MatchMaking::where('key','kasti-putra-semi-final-match-'.$i)->first())
                                     <li class="team team-top">{{ $match->school1->name??'Segera' }}<span
                                             class="score">{{ $match->score1??'-' }}</span></li>
                                     <li class="team team-bottom">{{ $match->school2->name??'Segera' }}<span
@@ -346,7 +346,7 @@
                             @for($i=1;$i<=8;$i++)
                                 @if($i==8)
                                 <ul class="matchup" style="margin-top: 5px">
-                                    @php($match=MatchMaking::where('key','kasti-putri-match-1')->first())
+                                    @php($match=MatchMaking::where('key','kasti-putri-match-0')->first())
                                     <li class="team team-top">{{ $match->school1->name??'Segera' }}<span
                                             class="score">{{ $match->score1??'-' }}</span></li>
                                     <li class="team team-bottom">{{ $match->school2->name??'Segera' }}<span
@@ -361,7 +361,7 @@
                         <div class="round round-two">
                             @for($i=1;$i<=4;$i++)
                                 <ul class="matchup">
-                                    @php($match=MatchMaking::where('key','kasti-putri-16-besar-match-'.$i)->first())
+                                    @php($match=MatchMaking::where('key','kasti-putri-perempat-final-match-'.$i)->first())
                                     <li class="team team-top">{{ $match->school1->name??'Segera' }}<span
                                             class="score">{{ $match->score1??'-' }}</span></li>
                                     <li class="team team-bottom">{{ $match->school2->name??'Segera' }}<span
@@ -374,7 +374,7 @@
                         <div class="round round-three">
                             @for($i=1;$i<=2;$i++)
                                 <ul class="matchup">
-                                    @php($match=MatchMaking::where('key','kasti-putri-perempat-final-match-'.$i)->first())
+                                    @php($match=MatchMaking::where('key','kasti-putri-semi-final-match-'.$i)->first())
                                     <li class="team team-top">{{ $match->school1->name??'Segera' }}<span
                                             class="score">{{ $match->score1??'-' }}</span></li>
                                     <li class="team team-bottom">{{ $match->school2->name??'Segera' }}<span
