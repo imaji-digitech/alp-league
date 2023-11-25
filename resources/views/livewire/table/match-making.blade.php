@@ -28,11 +28,11 @@
                     <td>{{ $data->date_match }}</td>
                     <td>{{ $data->title }}</td>
                     <td>{{ $data->sport->title }}</td>
-                    <td style="text-align: left">{{ $data->school1->name }}
+                    <td style="text-align: left">{{ $data->school1->name??'-' }}
                         <br>
                         <b>Vs</b>
                         <br>
-                        {{ $data->school2->name }}
+                        {{ $data->school2->name??'-' }}
                     </td>
                     <td>{{ $data->supervisor }}</td>
                     <td class="whitespace-no-wrap row-action--icon">

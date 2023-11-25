@@ -48,7 +48,18 @@ class MatchMakingUpdateScore extends Component
         if ($this->score2==null){
             $this->score2=0;
         }
-        $this->match->update(['score1'=>$this->score1,'score2'=>$this->score2,'update_score'=>1]);
+        $this->match->update(['score1'=>$this->score1,'score2'=>$this->score2,'update_score'=>0]);
+        $winner=$this->score1>$this->score2?$this->match->school1_id:$this->match->school2_id;
+        $nextMatch=MatchMaking::where('key',$this->match->reference_to)->first();
+
+        if ($nextMatch!=null){
+            if (intVal(substr($this->match->key, -1))%2!=0){
+                $nextMatch->update(['school1_id'=>$winner]);
+            }else{
+                $nextMatch->update(['school2_id'=>$winner]);
+            }
+
+        }
         $this->match=MatchMaking::find($this->match->id);
         $this->updateAble=0;
         $this->changeColor();

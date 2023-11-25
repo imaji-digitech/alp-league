@@ -7,7 +7,7 @@
                 <td style="width: 50%">
                     <table style="width: 100% ; height: 100px;">
                         <tr>
-                            <td class="school-team" style="text-align: right"><h5>{{ $match->school1->name }}</h5></td>
+                            <td class="school-team" style="text-align: right"><h5>{{ $match->school1->name??'-' }}</h5></td>
                             <td class="score">
                                 <input type="text"
                                        style="width: 100%;height: 100px;background: white; font-size: 3.2rem;color: #000; text-align: center;font-weight: bold; border-radius: 5px; border: #fff"
@@ -28,7 +28,7 @@
                                        wire:model="score2"
                                        @if($updateAble==0) disabled @endif>
                             </td>
-                            <td class="school-team" style=" text-align: left"><h5>{{ $match->school2->name }}</h5></td>
+                            <td class="school-team" style=" text-align: left"><h5>{{ $match->school2->name??'-' }}</h5></td>
                         </tr>
                     </table>
                 </td>

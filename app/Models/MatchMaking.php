@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $supervisor
  * @property string $created_at
  * @property string $updated_at
+ * @property string $reference_to
+ * @property string $key
  * @property School $school1
  * @property School $school2
  * @property Sport $sport
@@ -31,11 +33,11 @@ class MatchMaking extends Model
     /**
      * @var array
      */
-    protected $fillable = ['school1_id', 'school2_id', 'sport_id', 'title', 'update_score', 'score1', 'score2', 'date_match', 'supervisor', 'created_at', 'updated_at'];
+    protected $fillable = ['school1_id', 'school2_id', 'sport_id', 'title', 'update_score', 'score1', 'score2', 'date_match', 'supervisor','key','reference_to', 'created_at', 'updated_at'];
 
     public static function getForm()
     {
-        return ['school1_id', 'school2_id', 'sport_id', 'title', 'date_match', 'supervisor',];
+        return ['school1_id', 'school2_id', 'sport_id', 'title', 'date_match', 'supervisor','reference_to','key'];
     }
 
     public static function search($query)
@@ -57,8 +59,7 @@ class MatchMaking extends Model
         return [
             'data.title' => 'required|max:255',
             'data.supervisor' => 'required|max:255',
-            'data.school1_id' => 'required',
-            'data.school2_id' => 'required',
+
             'data.sport_id' => 'required',
         ];
     }

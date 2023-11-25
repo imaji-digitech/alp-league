@@ -6,6 +6,7 @@ use App\Models\MatchMaking as Model;
 use App\Models\School;
 use App\Models\Sport;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class MatchMaking extends Component
@@ -31,8 +32,8 @@ class MatchMaking extends Component
         if ($this->data['date_match']==null){
             $this->data['date_match']=Carbon::now();
         }
+        $this->data['key']=Str::slug(Sport::find($this->data['sport_id'])->title.'-'.$this->data['title']);
         Model::create($this->data);
-//        dd('asd');
         $this->emit('swal:alert', [
             'type' => 'success',
             'title' => 'Berhasil menambahkan data',
@@ -49,6 +50,7 @@ class MatchMaking extends Component
         if ($this->data['date_match']==null){
             $this->data['date_match']=Carbon::now();
         }
+        $this->data['key']=Str::slug(Sport::find($this->data['sport_id'])->title.'-'.$this->data['title']);
         Model::find($this->dataId)->update($this->data);
         $this->emit('swal:alert', [
             'type' => 'success',

@@ -36,6 +36,9 @@
         <div class="col-lg-6 col-md-6 col-sm-12">
             <x-form.input model="data.title" title="Pertandingan" type="text"/>
         </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <x-form.input model="data.reference_to" title="Jika menang ke kunci mana" type="text"/>
+        </div>
         <div class="col-lg-12 col-md-12 col-sm-12">
             <button type="submit" id="submit" class="btn btn-success" style="width: 100%">Submit</button>
         </div>
