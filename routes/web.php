@@ -39,11 +39,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing');
 });
-Route::get('/match-fixing',function (){
-    foreach (MatchMaking::get() as $mm){
-        $mm->update(['reference_to'=> \Illuminate\Support\Str::slug($mm->sport->title.'-'.$mm->reference_to)]);
-    }
-});
+
 Route::get('register', function () {
     return redirect(route('login'));
 });

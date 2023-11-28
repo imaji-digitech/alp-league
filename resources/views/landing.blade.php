@@ -235,7 +235,7 @@
                         <div class="round round-two">
                             @for($i=5;$i<=8;$i++)
                                 <ul class="matchup">
-                                    @php($match=MatchMaking::where('key','sepak-bola-mini-perempat-final-match-'.$i)->first())
+                                    @php($match=MatchMaking::where('key','sepak-bola-mini-16-besar-match-'.$i)->first())
                                     <li class="team team-top">{{ $match->school1->name??'Segera' }}<span
                                             class="score">{{ $match->score1??'-' }}</span></li>
                                     <li class="team team-bottom">{{ $match->school2->name??'Segera' }}<span
