@@ -32,8 +32,10 @@ class Certificate extends Component
                 ->get();
         }
         foreach ($school as $a){
-            $count=\App\Models\CertificateDetail::get()->count()+405;
-            \App\Models\CertificateDetail::create(['student_id'=>$a->id, 'certificate_id'=>$c->id,'number'=>"13.$count.A/XII/2022",]);
+
+//            13.060.B/IX/2023
+            $count=\App\Models\CertificateDetail::get()->count()+61;
+            \App\Models\CertificateDetail::create(['student_id'=>$a->id, 'certificate_id'=>$c->id,'number'=>"13.$count.A/XI/2023",]);
         }
         $this->emit('swal:alert', [
             'type' => 'success',
