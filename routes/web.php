@@ -65,7 +65,7 @@ Route::middleware(['auth:sanctum',])->group(function () {
     })->name('match-making.download');
 
     Route::get('sport/presence/download/{id}', function ($id) {
-        $sport= Sport::findOrFail($id);
+//        $sport= Sport::findOrFail($id);
 //        $pdf = App::make('dompdf.wrapper');
 //        $pdf->loadView('pdf.presence-sport', compact('sport'))->setPaper('a4');
 //        return $pdf->stream('Daftar hadir -'.$sport->title.'.pdf');
@@ -82,7 +82,7 @@ Route::middleware(['auth:sanctum',])->group(function () {
             $file = fopen('php://output', 'w');
             fputcsv($file, [''],$delimiter);
             fputcsv($file, ['Desa','nama','ttl','','','Sekolah'],$delimiter);
-            foreach ($sport->students as $student){
+            foreach (\App\Models\Student::orderBy('school_id')->get() as $student){
                 fputcsv($file, [
                     $student->school->village,
                     $student->name,
