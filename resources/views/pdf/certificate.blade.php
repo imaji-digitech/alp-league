@@ -44,20 +44,23 @@
     @endif
     <main style="font-family: 'Times New Roman'; text-align: center">
 
-        <div style="margin-top: 110px">
-            <h3>NO. SERTIFIKAT : {{$c->number}}</h3>
+        <div style="margin-top: 185px">
+            <h4>NO. SERTIFIKAT : {{$c->number}}</h4>
         </div>
-        <div style="margin-top: 85px">
-            <h1 style="font-size: 3.5em; text-transform: uppercase">
+        <div style="margin-top: 40px">
+            <h5 style="font-size: 2.8em; text-transform: uppercase">
                 {{ $c->student->name }}
-            </h1>
+            </h5>
 
         </div>
-        <div style="margin-top: 15px; text-transform: uppercase ">
-            <h5>Sebagai {{ $certificate->title }} {{ $certificate->sport_id? $certificate->sport->title:'' }} dalam ALP LEAGUE KABUPATEN 2022</h5>
+        <div style="margin-top: 15px; font-size: 1.2em">
+            Sebagai {{ $certificate->title }} Lomba {{ $certificate->sport_id? $certificate->sport->title:'' }}
+        </div>
+        <div style="margin-top: -5px; font-size: 1.2em">
+            ALP League Kabupaten Jember 2023
         </div>
     </main>
-{{--    @break--}}
+    {{--    @break--}}
 
 @endforeach
 {{--@if($i!=9)?--}}
