@@ -81,9 +81,9 @@ Route::middleware(['auth:sanctum',])->group(function () {
             $delimiter = ';';
             $file = fopen('php://output', 'w');
             fputcsv($file, [''],$delimiter);
-            fputcsv($file, ['Nomer Dada',"Nama",'Asal lembaga','tanda tangan'],$delimiter);
+            fputcsv($file, ['Nomer Dada',"Nama",'Desa','tanda tangan'],$delimiter);
             foreach ($sport->students as $student){
-                fputcsv($file, ['',$student->name,$student->school->name,''],$delimiter);
+                fputcsv($file, ['',$student->name,$student->school->village,''],$delimiter);
             }
             fclose($file);
         };
