@@ -47,13 +47,13 @@
         <div style="margin-top: 185px">
             <h4>NO. SERTIFIKAT : {{$c->number}}</h4>
         </div>
-        <div style="margin-top: 40px">
+        <div style="margin-top: 42px">
             <h5 style="font-size: 2.8em; text-transform: uppercase">
                 {{ $c->student->name }}
             </h5>
 
         </div>
-        <div style="margin-top: 15px; font-size: 1.2em">
+        <div style="margin-top: 13px; font-size: 1.2em">
             Sebagai {{ $certificate->title }} Lomba {{ $certificate->sport_id? $certificate->sport->title:'' }}
         </div>
         <div style="margin-top: -5px; font-size: 1.2em">
