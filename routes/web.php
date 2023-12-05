@@ -65,7 +65,7 @@ Route::middleware(['auth:sanctum',])->group(function () {
     })->name('match-making.download');
 
     Route::get('sport/presence/download/{id}', function ($id) {
-//        $sport= Sport::findOrFail($id);
+        $sport= Sport::findOrFail($id);
 //        $pdf = App::make('dompdf.wrapper');
 //        $pdf->loadView('pdf.presence-sport', compact('sport'))->setPaper('a4');
 //        return $pdf->stream('Daftar hadir -'.$sport->title.'.pdf');
