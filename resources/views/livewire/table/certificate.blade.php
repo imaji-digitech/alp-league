@@ -23,7 +23,7 @@
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
                     <td>{{ $index+1 + ($page-1)*$perPage }}</td>
                     <td>{{ $data->school->name }}</td>
-                    <td>{{ $data->sport->name }}</td>
+                    <td>{{ $data->sport->title }}</td>
                     <td>{{ $data->title }}</td>
                     <td>{{ $data->certificateDetails->count() }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
