@@ -8,6 +8,9 @@
                 <th><a wire:click.prevent="sortBy('school_id')" role="button" href="#">
                         Sekolah @include('components.sort-icon', ['field' => 'school_id'])
                     </a></th>
+                <th><a wire:click.prevent="sortBy('sport_id')" role="button" href="#">
+                        Cabor @include('components.sort-icon', ['field' => 'sport_id'])
+                    </a></th>
                 <th><a wire:click.prevent="sortBy('title')" role="button" href="#">
                         Judul @include('components.sort-icon', ['field' => 'title'])
                     </a></th>
@@ -20,6 +23,7 @@
                 <tr class="@if($loop->odd)bg-white @else bg-gray-100 @endif">
                     <td>{{ $index+1 + ($page-1)*$perPage }}</td>
                     <td>{{ $data->school->name }}</td>
+                    <td>{{ $data->sport->name }}</td>
                     <td>{{ $data->title }}</td>
                     <td>{{ $data->certificateDetails->count() }}</td>
                     <td class="whitespace-no-wrap row-action--icon">
