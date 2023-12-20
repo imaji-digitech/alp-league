@@ -43,7 +43,7 @@ Route::get('/', function () {
 Route::get('register', function () {
     return redirect(route('login'));
 });
-
+Route::get('certificate/champion/{schoolId}/{sportId}',[CertificateController::class,'champion'])->name('certificate.champion');
 Route::post('/summernote', [SupportController::class, 'upload'])->name('summernote');
 Route::middleware(['auth:sanctum',])->group(function () {
 
@@ -107,7 +107,7 @@ Route::middleware(['auth:sanctum',])->group(function () {
 
     Route::resource('certificate', CertificateController::class)->only('index','create');
     Route::get('certificate/school/{schoolId}',[CertificateController::class,'show'])->name('certificate.show');
-    Route::get('certificate/champion/{schoolId}/{sportId}',[CertificateController::class,'champion'])->name('certificate.champion');
+//    Route::get('certificate/champion/{schoolId}/{sportId}',[CertificateController::class,'champion'])->name('certificate.champion');
 
 
     Route::get('/setCertificate',function (){
