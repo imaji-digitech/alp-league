@@ -2,13 +2,13 @@
 {{--    @if (auth()->user()->school->upload1==null or auth()->user()->school->upload2==null)--}}
     <div class="col-sm-6 col-xl-6 col-lg-6">
         <a class="btn btn-secondary" style="width: 100%"
-           href="{{route('download.surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2023')}}" target="_blank">
+           href="{{route('download.surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2024')}}" target="_blank">
             Download Disini <br> Template surat pernyataan dan pendaftaran
         </a>
     </div>
     <div class="col-sm-6 col-xl-6 col-lg-6">
         <a class="btn btn-secondary" style="width: 100%"
-           href="{{route('download.surat-perwalian-alp-league-kabupaten-2023')}}" target="_blank">
+           href="{{route('download.surat-perwalian-alp-league-kabupaten-2024')}}" target="_blank">
             Download Disini <br> Template surat perwalian
         </a>
     </div>

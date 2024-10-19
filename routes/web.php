@@ -66,9 +66,6 @@ Route::middleware(['auth:sanctum',])->group(function () {
 
     Route::get('sport/presence/download/{id}', function ($id) {
         $sport= Sport::findOrFail($id);
-//        $pdf = App::make('dompdf.wrapper');
-//        $pdf->loadView('pdf.presence-sport', compact('sport'))->setPaper('a4');
-//        return $pdf->stream('Daftar hadir -'.$sport->title.'.pdf');
         $headers = array(
             "Content-type" => "text/csv",
             "Content-Disposition" => "attachment; filename=Daftar hadir $sport->title.csv",
@@ -167,9 +164,19 @@ Route::middleware(['auth:sanctum',])->group(function () {
     Route::get('/download/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2023',function (){
         return response()->download('alp-league/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2023.docx');
     })->name('download.surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2023');
+
     Route::get('/download/surat-perwalian-alp-league-kabupaten-2023',function (){
         return response()->download('alp-league/surat-perwalian-alp-league-kabupaten-2023.docx');
     })->name('download.surat-perwalian-alp-league-kabupaten-2023');
+
+
+    Route::get('/download/surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2024',function (){
+        return response()->download('alp-league/surat_pendaftaran&pernyataan_keikutsertaan_alp_league_kabupaten_2024.pdf');
+    })->name('download.surat-pernyataan-dan-pendaftaran-alp-league-kabupaten-2024');
+
+    Route::get('/download/surat-perwalian-alp-league-kabupaten-2024',function (){
+        return response()->download('alp-league/surat_perwalian_keikutsertaan_alp_league_kabupaten_2024.pdf');
+    })->name('download.surat-perwalian-alp-league-kabupaten-2024');
 
     Route::get('/download', function () {
         if(auth()->user()->school_id!=null){
