@@ -101,7 +101,7 @@ class User extends Component
 
         $user = \App\Models\User::find($this->dataId);
 
-        $school = School::find($user->school_id)([
+        $school = School::find($user->school_id)->update([
             'village' => $this->data['village'],
             'name' => $this->data['name'],
         ]);
