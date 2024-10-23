@@ -108,7 +108,6 @@ class User extends Component
         $user->update([
             'name' => $this->data['name'],
             'email' => $this->data['email'],
-            'school_id' => $school->id
         ]);
         if ($this->data['password'] != '') {
             $user->update([
