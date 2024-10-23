@@ -25,8 +25,8 @@
                 <tr x-data="window.__controller.dataTableController({{ $user->id }})">
                     <td>{{ $index+1 }}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->school->village }}</td>
-                    <td>{{ $user->school->name }}</td>
+                    <td>{{ $user->school->village??'' }}</td>
+                    <td>{{ $user->school->name??'' }}</td>
                     {{--                    <td>{{ $user->created_at->format('d M Y H:i') }}</td>--}}
                     <td class="">
                         <a role="button" href="{{ route('users.edit',$user->id) }}" style="margin: 2px" class="btn btn-sm btn-warning">
