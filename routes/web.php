@@ -10,6 +10,7 @@ use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TravelPermitController;
+use App\Http\Controllers\UserController;
 use App\Models\Certificate;
 use App\Models\GoodReceipt;
 use App\Models\Invoice;
@@ -47,6 +48,8 @@ Route::get('certificate/champion/{schoolId}/{sportId}',[CertificateController::c
 Route::post('/summernote', [SupportController::class, 'upload'])->name('summernote');
 Route::middleware(['auth:sanctum',])->group(function () {
 
+    Route::resource('users', UserController::class);
+//    Route::get('users',[UserController::class,'index'])->name('user.index');
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

@@ -113,6 +113,10 @@ class Main extends Component
                 $data = MatchMaking::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
                 return ["view" => 'livewire.table.match-making', "datas" => $data,];
                 break;
+            case 'user':
+                $users = $this->model::search($this->search)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate($this->perPage);
+                return ["view" => 'livewire.table.user', "users" => $users,];
+                break;
 
 
             default:

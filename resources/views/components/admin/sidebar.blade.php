@@ -59,6 +59,12 @@
                                 <i class="fas fa-school"></i><span> Sertifikat</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav" href="{{ route('users.index') }}">
+                                <i class="fas fa-users"></i><span> User</span>
+                            </a>
+                        </li>
                     @else
                         @if (auth()->user()->school->upload1!=null or auth()->user()->school->upload2!=null)
                             <li class="sidebar-list">

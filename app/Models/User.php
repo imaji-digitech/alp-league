@@ -63,4 +63,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\School','school_id');
     }
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where(function ($q) use ($query) {
+            $q->where('name', 'like', '%' . $query . '%')
+                ->orWhere('email', 'like', '%' . $query . '%');
+        });
+    }
 }
