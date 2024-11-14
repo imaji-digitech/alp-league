@@ -77,12 +77,12 @@ Route::middleware(['auth:sanctum',])->group(function () {
             "Expires" => "0"
         );
 
-        $callback = function () use ($sport) {
+        $callback = function () use ($id, $sport) {
             $delimiter = ';';
             $file = fopen('php://output', 'w');
             fputcsv($file, [''],$delimiter);
             fputcsv($file, ['Desa','nama','ttl','','','Sekolah'],$delimiter);
-            foreach (\App\Models\Student::orderBy('school_id')->get() as $student){
+            foreach (\App\Models\Student::sport_id($id)->orderBy('school_id')->get() as $student){
                 fputcsv($file, [
                     $student->school->village,
                     $student->name,

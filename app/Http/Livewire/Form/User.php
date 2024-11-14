@@ -24,7 +24,7 @@ class User extends Component
             $data = \App\Models\User::find($this->dataId);
             $this->data = [
                 'name' => $data['name'],
-                'email' => $data['name'],
+                'email' => $data['email'],
                 'village' => $data->school->village,
                 'password' => '',
                 'password_confirmation' => '',
