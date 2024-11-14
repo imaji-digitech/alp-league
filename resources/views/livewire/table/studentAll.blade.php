@@ -33,6 +33,7 @@
                     <td><img src="{{ asset('storage/'. $data->report ) }}" style="width: 300px" alt=""></td>
                     <td class="whitespace-no-wrap row-action--icon">
                         <a href="{{ route('student.edit',$data->id) }}" class="btn-primary btn m-1"> Ubah</a>
+                        <a href="#" wire:click="deleteItem({{ $data->id }})" class="btn btn-danger">Hapus</a>
                     </td>
                 </tr>
             @endforeach
